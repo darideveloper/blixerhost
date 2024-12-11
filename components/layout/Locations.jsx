@@ -1,13 +1,15 @@
 export default function Locations() {
   return (
-    <div
+    <section
       className={`
         locations
+        container
+        mx-auto
       `}
       data-aos="fade-up"
       data-aos-delay="500"
     >
       locations
-    </div>
+    </section>
   )
 }

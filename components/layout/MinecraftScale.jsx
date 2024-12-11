@@ -1,13 +1,15 @@
 export default function MinecraftScale() {
   return (
-    <div
+    <section
       className={`
         minecraft-scale
+        container
+        mx-auto
       `}
       data-aos="fade-up"
       data-aos-delay="300"
     >
       minecraft scale
-    </div>
+    </section>
   )
 }
