@@ -4,6 +4,8 @@ export default function Faqs() {
       className={`
         faqs
       `}
+      data-aos="fade-up"
+      data-aos-delay="400"
     >
       faqs
     </div>

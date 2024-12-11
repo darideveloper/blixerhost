@@ -4,6 +4,8 @@ export default function Locations() {
       className={`
         locations
       `}
+      data-aos="fade-up"
+      data-aos-delay="500"
     >
       locations
     </div>

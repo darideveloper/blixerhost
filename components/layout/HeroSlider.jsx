@@ -4,6 +4,8 @@ export default function HeroSlider() {
       className={`
         hero-slider
       `}
+      data-aos="fade-up"
+      data-aos-delay="200"
     >
       hero slide
     </div>
