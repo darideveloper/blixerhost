@@ -1,7 +1,6 @@
 "use client"
 
 // Libs
-import { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, A11y, Autoplay } from 'swiper/modules'
 
@@ -64,32 +63,52 @@ export default function HeroSlider() {
                   px-16
                 `}
               >
-                <Title
-                  className={`
-                    my-2
+                <div 
+                  classe={`
+                    title-wrapper
+                    w-full
                   `}
-                  isH1={index === 0}
+                  data-aos="fade-down"
+                  data-aos-delay="200"
                 >
-                  {heroSlide.title}
-                </Title>
+                  <Title
+                    className={`
+                      my-2
+                    `}
+                    isH1={index === 0}
+                  >
+                    {heroSlide.title}
+                  </Title>
+                </div>
                 <p
                   className={`
+                    text
                     max-w-xl
                     mx-auto
                     my-4
                   `}
+                  data-aos="zoom-out"
+                  data-aos-delay="800"
                 >
                   {heroSlide.text}
                 </p>
-                <ButtonLink
-                  href={heroSlide.ctaLink}
+                <div
                   className={`
-                    primary
-                    mt-4
+                    btn-wrapper
                   `}
+                  data-aos="fade-up"
+                  data-aos-delay="1200"
                 >
-                  Ver planes
-                </ButtonLink>
+                  <ButtonLink
+                    href={heroSlide.ctaLink}
+                    className={`
+                      primary
+                      mt-4
+                    `}
+                  >
+                    Ver planes
+                  </ButtonLink>
+                </div>
               </div>
             </SwiperSlide>
           ))

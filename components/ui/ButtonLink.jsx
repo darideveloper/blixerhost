@@ -7,11 +7,12 @@ import Link from 'next/link'
 
 /**
  * Link with button style
+ * 
  * @param {object} props - Component props
  * @param {React.ReactNode} props.children - Button content (text)
  * @param {boolean} props.active - If true, renders an active button. Default is false
  * @param {string} props.href - Button link
- * @returns
+ * @returns {JSX.Element} - Component template
  */
 export default function ButtonLink({ children, active = false, href, className }) {
   return (
@@ -32,7 +33,7 @@ export default function ButtonLink({ children, active = false, href, className }
         flex
         items-center
         justify-center
-        hover:scale-105
+        scale-100
         ${fontTitle.className}
         ${className}
       `}
