@@ -61,6 +61,7 @@ export default function HeroSlider() {
                   items-center
                   justify-center
                   py-36
+                  px-16
                 `}
               >
                 <Title
