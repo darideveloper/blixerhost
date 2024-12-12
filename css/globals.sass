@@ -36,3 +36,17 @@ body
 
 .swiper-pagination-bullet-active
   background-color: $green-dark !important
+
+// Custom scroll bar
+::-webkit-scrollbar
+  width: 12px
+
+::-webkit-scrollbar-track
+  background: $blue-dark
+
+::-webkit-scrollbar-thumb
+  duration: 0.5s !important
+  background: $green-dark
+
+  &:hover
+    background: $blue-light
