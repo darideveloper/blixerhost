@@ -41,8 +41,8 @@ export default function ButtonLink({ children, active = false, href, className }
       {children}
       <p
         className={`
-          inline-block
           ml-4
+          hidden sm:inline-block
         `}
       >
         <FaArrowAltCircleRight/>
