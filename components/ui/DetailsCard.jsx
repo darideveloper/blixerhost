@@ -1,28 +1,41 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
+import { useState } from "react";
 
-/**
- * Card with title that opens up to show more details
- * 
- * @param {props} props
- * @param {string} props.title - Title of the card
- * @param {string} props.icon - Icon of the card (react-icon)
- * @param {string} props.className - Additional classes
- * @param {string} props.children - Card content
- * @returns 
- */
-export default function DetailsCard ({ title, icon, className, children }) {
+import { MdOutlineNavigateNext } from "react-icons/md";
 
-  const [isOpen, setIsOpen] = useState(false)
+const DetailsCard = ({ title, children, icon, className }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <article
-      className={`
-        details-card
-      `}
+    <div
+      className={` bg-grey text-black my-4 rounded ${
+        isOpen ? "border-b-2" : ""
+      } ${className}`}
     >
-      {children}
-    </article>
-  )
-}
+      <button
+        className="flex justify-between items-center w-full py-4 px-6 text-left focus:outline-none"
+        onClick={toggleAccordion}
+      >
+        <h3 className="text-lg font-medium">
+          <span className="p-0 inline-block mr-2 align-middle">{icon}</span>
+          {title}
+        </h3>
+        <span
+          className={`text-2xl font-bold transition-transform ${
+            isOpen ? "rotate-90" : ""
+          }`}
+        >
+          {isOpen ? <MdOutlineNavigateNext /> : <MdOutlineNavigateNext />}
+        </span>
+      </button>
+      {isOpen && <div className={`px-6 pb-4 mx-8`}>{children}</div>}
+    </div>
+  );
+};
+
+export default DetailsCard;

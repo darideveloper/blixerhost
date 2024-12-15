@@ -1,33 +1,40 @@
 // Libs
-import { fontTitle } from "@/libs/fonts"
+import { fontTitle } from "@/libs/fonts";
 
 // Components
-import { FaArrowAltCircleRight } from "react-icons/fa"
-import Link from 'next/link'
+import { FaArrowAltCircleRight } from "react-icons/fa";
+import Link from "next/link";
 
 /**
  * Link with button style
- * 
+ *
  * @param {object} props - Component props
  * @param {React.ReactNode} props.children - Button content (text)
  * @param {boolean} props.active - If true, renders an active button. Default is false
  * @param {string} props.href - Button link
  * @returns {JSX.Element} - Component template
  */
-export default function ButtonAction({ children, active = false, href, className }) {
+export default function ButtonAction({
+  children,
+  active = false,
+  href,
+  className = "",
+  onClick,
+}) {
   return (
-    <Link
+    <button
+      onClick={onClick}
       className={`
         button
         border-2
-        border-green-dark 
-        ${active ? 'bg-transparent' : 'bg-green-dark hover:bg-transparent'}
-        ${active ? 'text-green-dark' : 'text-blue-dark hover:text-green-dark'}
+        border-blue-grey
+        ${active ? "bg-transparent" : "bg-blue-medium hover:bg-transparent"}
+        ${active ? "text-" : "text-blue-dark hover:text-green-dark"}
         font-weight-bold
-        text-3xl
+        text-2xl
         font-bold
         rounded-md
-        px-8
+        px-2
         py-2
         duration-300
         flex
@@ -46,8 +53,8 @@ export default function ButtonAction({ children, active = false, href, className
           hidden sm:inline-block
         `}
       >
-        <FaArrowAltCircleRight/>
+        <FaArrowAltCircleRight />
       </p>
-    </Link>
-  )
+    </button>
+  );
 }
