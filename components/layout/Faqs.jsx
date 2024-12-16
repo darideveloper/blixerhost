@@ -4,96 +4,108 @@
 import { FaQuestionCircle } from "react-icons/fa";
 import ButtonAction from "@/components/ui/ButtonAction";
 import ButtonLink from "@/components/ui/ButtonLink";
-import { BsFillQuestionSquareFill } from "react-icons/bs";
 import Title from "@/components/ui/Title";
 import { useState } from "react";
 import { GoDotFill } from "react-icons/go";
 import DetailsCard from "../ui/DetailsCard";
 import { BiSolidConversation } from "react-icons/bi";
-import { FaDiscord } from "react-icons/fa";
-
+import { FaCreditCard } from "react-icons/fa";
+import { FaServer } from "react-icons/fa";
+import { FaHeadset } from "react-icons/fa";
 export default function Faqs() {
   const faqsData = {
-    "General Information": [
-      {
-        title: "What is EasyMinecraftHosting?",
-        answer:
-          "EasyMinecraftHosting is a Minecraft server hosting platform that provides reliable, high-performance servers for all your Minecraft gaming needs.",
-        icon: BsFillQuestionSquareFill,
-      },
-      {
-        title: "How do I create a new Minecraft server?",
-        answer:
-          "To create a new Minecraft server, simply sign up for an EasyMinecraftHosting account, select a plan that fits your needs, and follow the step-by-step instructions to set up your server.",
-        icon: FaQuestionCircle,
-      },
-      {
-        title: "Can I host multiple Minecraft servers with one account?",
-        answer:
-          "Yes, you can host multiple Minecraft servers with a single EasyMinecraftHosting account. Our platform allows you to easily manage all your servers from a centralized dashboard.",
-        icon: FaQuestionCircle,
-      },
-    ],
-    "Billing and Payments": [
-      {
-        title: "What payment methods do you accept?",
-        answer:
-          "EasyMinecraftHosting accepts a variety of payment methods, including credit/debit cards, PayPal, and cryptocurrency. We strive to offer flexible payment options for our customers.",
-        icon: FaQuestionCircle,
-      },
-      {
-        title: "Do you offer any discounts or promotions?",
-        answer:
-          "Yes, we frequently offer discounts and promotions, such as first-month discounts, annual billing discounts, and special offers for new customers. Be sure to check our website or contact our sales team for the latest deals.",
-        icon: FaQuestionCircle,
-      },
-      {
-        title: "Can I cancel my subscription at any time?",
-        answer:
-          "Absolutely. Our Minecraft server hosting plans are month-to-month, and you can cancel your subscription at any time without any penalties or fees.",
-        icon: FaQuestionCircle,
-      },
-    ],
-    "Server Features": [
-      {
-        title: "Do you offer custom server configurations?",
-        answer:
-          "Yes, we provide a wide range of server configurations and options to ensure your Minecraft server meets your specific needs. Our team can assist you in selecting the right hardware and software setup for your requirements.",
-        icon: FaQuestionCircle,
-      },
-      {
-        title: "Can I install my own plugins and mods?",
-        answer:
-          "Yes, you can install your own plugins and mods on your EasyMinecraftHosting server. Our platform supports a wide range of Minecraft modifications to enhance your gaming experience.",
-        icon: FaQuestionCircle,
-      },
-      {
-        title: "Do you provide automatic server backups?",
-        answer:
-          "Absolutely. We offer automatic daily backups of your Minecraft server data, allowing you to quickly restore your server in the event of an issue or data loss.",
-        icon: FaQuestionCircle,
-      },
-    ],
-    "Customer Support": [
-      {
-        title: "What is your average support response time?",
-        answer:
-          "At EasyMinecraftHosting, we pride ourselves on our exceptional customer support. Our average support response time is within 30 minutes, ensuring that any issues or questions you have are addressed promptly.",
-        icon: FaQuestionCircle,
-      },
-      {
-        title: "Do you offer 24/7 technical support?",
-        answer:
-          "Yes, our Minecraft server hosting platform is supported by a team of knowledgeable technicians who are available 24 hours a day, 7 days a week to assist you with any technical issues or questions you may have.",
-        icon: FaQuestionCircle,
-      },
-      {
-        title: "How can I contact your support team?",
-        answer:
-          "You can reach our support team through various channels, including our live chat, email, and a dedicated support ticket system. We strive to provide you with multiple options to get the assistance you need.",
-        icon: FaQuestionCircle,
-      },
-    ],
+    "General Information": {
+      icon: <FaQuestionCircle />,
+      questions: [
+        {
+          title: "What is EasyMinecraftHosting?",
+          answer:
+            "EasyMinecraftHosting is a Minecraft server hosting platform that provides reliable, high-performance servers for all your Minecraft gaming needs.",
+          icon: <FaQuestionCircle />,
+        },
+        {
+          title: "How do I create a new Minecraft server?",
+          answer:
+            "To create a new Minecraft server, simply sign up for an EasyMinecraftHosting account, select a plan that fits your needs, and follow the step-by-step instructions to set up your server.",
+          icon: <FaQuestionCircle />,
+        },
+        {
+          title: "Can I host multiple Minecraft servers with one account?",
+          answer:
+            "Yes, you can host multiple Minecraft servers with a single EasyMinecraftHosting account. Our platform allows you to easily manage all your servers from a centralized dashboard.",
+          icon: <FaQuestionCircle />,
+        },
+      ],
+    },
+    "Billing and Payments": {
+      icon: <FaCreditCard />,
+      questions: [
+        {
+          title: "What payment methods do you accept?",
+          answer:
+            "EasyMinecraftHosting accepts a variety of payment methods, including credit/debit cards, PayPal, and cryptocurrency. We strive to offer flexible payment options for our customers.",
+          icon: <FaQuestionCircle />,
+        },
+        {
+          title: "Do you offer any discounts or promotions?",
+          answer:
+            "Yes, we frequently offer discounts and promotions, such as first-month discounts, annual billing discounts, and special offers for new customers. Be sure to check our website or contact our sales team for the latest deals.",
+          icon: <FaQuestionCircle />,
+        },
+        {
+          title: "Can I cancel my subscription at any time?",
+          answer:
+            "Absolutely. Our Minecraft server hosting plans are month-to-month, and you can cancel your subscription at any time without any penalties or fees.",
+          icon: <FaQuestionCircle />,
+        },
+      ],
+    },
+    "Server Features": {
+      icon: <FaServer />,
+      questions: [
+        {
+          title: "Do you offer custom server configurations?",
+          answer:
+            "Yes, we provide a wide range of server configurations and options to ensure your Minecraft server meets your specific needs. Our team can assist you in selecting the right hardware and software setup for your requirements.",
+          icon: <FaQuestionCircle />,
+        },
+        {
+          title: "Can I install my own plugins and mods?",
+          answer:
+            "Yes, you can install your own plugins and mods on your EasyMinecraftHosting server. Our platform supports a wide range of Minecraft modifications to enhance your gaming experience.",
+          icon: <FaQuestionCircle />,
+        },
+        {
+          title: "Do you provide automatic server backups?",
+          answer:
+            "Absolutely. We offer automatic daily backups of your Minecraft server data, allowing you to quickly restore your server in the event of an issue or data loss.",
+          icon: <FaQuestionCircle />,
+        },
+      ],
+    },
+    "Customer Support": {
+      icon: <FaHeadset />,
+      questions: [
+        {
+          title: "What is your average support response time?",
+          answer:
+            "At EasyMinecraftHosting, we pride ourselves on our exceptional customer support. Our average support response time is within 30 minutes, ensuring that any issues or questions you have are addressed promptly.",
+          icon: <FaQuestionCircle />,
+        },
+        {
+          title: "Do you offer 24/7 technical support?",
+          answer:
+            "Yes, our Minecraft server hosting platform is supported by a team of knowledgeable technicians who are available 24 hours a day, 7 days a week to assist you with any technical issues or questions you may have.",
+          icon: <FaQuestionCircle />,
+        },
+        {
+          title: "How can I contact your support team?",
+          answer:
+            "You can reach our support team through various channels, including our live chat, email, and a dedicated support ticket system. We strive to provide you with multiple options to get the assistance you need.",
+          icon: <FaQuestionCircle />,
+        },
+      ],
+    },
   };
 
   const [currentCategory, setCurrentCategory] = useState(
@@ -149,6 +161,7 @@ export default function Faqs() {
                   `}
                   key={index}
                   active={currentCategory === category ? true : false}
+                  icon={faqsData[category].icon}
                 >
                   {category}
                 </ButtonAction>
@@ -173,8 +186,8 @@ export default function Faqs() {
               <div>
                 <ButtonLink
                   href="https://discord.blixerhost.es/"
-                  className="w-32"
-                  icon={<BiSolidConversation/>}
+                  className=""
+                  icon={<BiSolidConversation />}
                 >
                   Discord
                 </ButtonLink>
@@ -198,8 +211,8 @@ export default function Faqs() {
           md:w-1/2
         `}
         >
-          {faqsData[currentCategory].map((faq, index) => (
-            <DetailsCard icon={<faq.icon />} key={index} title={faq.title}>
+          {faqsData[currentCategory].questions.map((faq, index) => (
+            <DetailsCard icon={faq.icon} key={index} title={faq.title}>
               <article>{faq.answer}</article>
             </DetailsCard>
           ))}
