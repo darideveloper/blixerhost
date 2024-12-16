@@ -111,6 +111,18 @@ export default function Faqs() {
   const [currentCategory, setCurrentCategory] = useState(
     Object.keys(faqsData)[0]
   );
+  const [animating, setAnimating] = useState(false);
+
+  const handleCategoryChange = (category) => {
+    if (!animating) {
+      setAnimating(true);
+      setTimeout(() => {
+        setCurrentCategory(category);
+        setAnimating(false);
+      }, 500);
+    }
+  };
+
   return (
     <>
       <section
@@ -154,7 +166,7 @@ export default function Faqs() {
             {Object.keys(faqsData).map((category, index) => (
               <div className="p-2" key={index}>
                 <ButtonAction
-                  onClick={() => setCurrentCategory(category)}
+                  onClick={() => handleCategoryChange(category)}
                   href="#"
                   className={`
                     category-btn
@@ -209,6 +221,7 @@ export default function Faqs() {
           w-full
           p-2
           md:w-1/2
+          ${animating ? "opacity-0 transition-opacity duration-500" : "opacity-100"}
         `}
         >
           {faqsData[currentCategory].questions.map((faq, index) => (

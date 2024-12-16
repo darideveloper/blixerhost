@@ -6,23 +6,16 @@ import { MdOutlineNavigateNext } from "react-icons/md";
 
 const DetailsCard = ({ title, children, icon, className }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const toggleAccordion = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setIsOpen(!isOpen);
-      setIsTransitioning(false);
-    }, 500);
+    setIsOpen(!isOpen);
   };
 
   return (
     <div
       className={` bg-grey text-black my-4 rounded ${
         isOpen ? "border-b-2" : ""
-      } ${className} transition-opacity duration-500 ${
-        isTransitioning ? "opacity-0" : "opacity-100"
-      }`}
+      } ${className}`}
     >
       <button
         className="flex justify-between items-center w-full py-4 px-6 text-left focus:outline-none"
