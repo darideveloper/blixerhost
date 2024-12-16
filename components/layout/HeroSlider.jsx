@@ -7,6 +7,7 @@ import { Navigation, A11y, Autoplay } from 'swiper/modules'
 // Components
 import Title from '@/components/ui/Title'
 import ButtonLink from '@/components/ui/ButtonLink'
+import { FaArrowAltCircleRight } from "react-icons/fa"
 
 
 import 'swiper/css'
@@ -105,6 +106,7 @@ export default function HeroSlider() {
                       primary
                       mt-4
                     `}
+                    icon={<FaArrowAltCircleRight />}
                   >
                     Ver planes
                   </ButtonLink>

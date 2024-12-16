@@ -81,7 +81,6 @@ export default function MinecraftScale() {
       <article
         className={`
           container
-          max-w-7xl
           mx-auto
           flex
           flex-col-reverse md:flex-row-reverse

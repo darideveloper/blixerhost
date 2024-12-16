@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <HeroSlider />
       <MinecraftScale />
-      {/* <Faqs /> */}
+      <Faqs />
       <Locations />
       <TailwindColorPalette/>
     </>

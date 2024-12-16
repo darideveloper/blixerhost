@@ -4,87 +4,108 @@
 import { useState } from "react"
 
 // Components
-import { FaQuestionCircle } from "react-icons/fa"
 import ButtonAction from "@/components/ui/ButtonAction"
 import ButtonLink from "@/components/ui/ButtonLink"
-import DetailsCard from "@/components/ui/DetailsCard"
 import Title from "@/components/ui/Title"
+import DetailsCard from "@/components/ui/DetailsCard"
+
+// Icons
+import { FaQuestionCircle } from "react-icons/fa"
+import { BsFillQuestionSquareFill } from "react-icons/bs"
+import { GoDotFill } from "react-icons/go"
+import { BiSolidConversation } from "react-icons/bi"
 
 
 export default function Faqs() {
 
-  const [currentCategory, setCurrentCategory] = useState("Category 1")
-
+  // Component data
   const faqsData = {
-    "Category 1": [
+    "General Information": [
       {
-        "title": "Question 1",
-        "answer": "Answer 1",
-        "icon": FaQuestionCircle
+        title: "What is EasyMinecraftHosting?",
+        answer:
+          "EasyMinecraftHosting is a Minecraft server hosting platform that provides reliable, high-performance servers for all your Minecraft gaming needs.",
+        icon: BsFillQuestionSquareFill,
       },
       {
-        "title": "Question 2",
-        "answer": "Answer 2",
-        "icon": FaQuestionCircle
+        title: "How do I create a new Minecraft server?",
+        answer:
+          "To create a new Minecraft server, simply sign up for an EasyMinecraftHosting account, select a plan that fits your needs, and follow the step-by-step instructions to set up your server.",
+        icon: FaQuestionCircle,
       },
       {
-        "title": "Question 3",
-        "answer": "Answer 3",
-        "icon": FaQuestionCircle
-      }
+        title: "Can I host multiple Minecraft servers with one account?",
+        answer:
+          "Yes, you can host multiple Minecraft servers with a single EasyMinecraftHosting account. Our platform allows you to easily manage all your servers from a centralized dashboard.",
+        icon: FaQuestionCircle,
+      },
     ],
-    "Category 2": [
+    "Billing and Payments": [
       {
-        "title": "Question 4",
-        "answer": "Answer 4",
-        "icon": FaQuestionCircle
+        title: "What payment methods do you accept?",
+        answer:
+          "EasyMinecraftHosting accepts a variety of payment methods, including credit/debit cards, PayPal, and cryptocurrency. We strive to offer flexible payment options for our customers.",
+        icon: FaQuestionCircle,
       },
       {
-        "title": "Question 5",
-        "answer": "Answer 5",
-        "icon": FaQuestionCircle
+        title: "Do you offer any discounts or promotions?",
+        answer:
+          "Yes, we frequently offer discounts and promotions, such as first-month discounts, annual billing discounts, and special offers for new customers. Be sure to check our website or contact our sales team for the latest deals.",
+        icon: FaQuestionCircle,
       },
       {
-        "title": "Question 6",
-        "answer": "Answer 6",
-        "icon": FaQuestionCircle
-      }
+        title: "Can I cancel my subscription at any time?",
+        answer:
+          "Absolutely. Our Minecraft server hosting plans are month-to-month, and you can cancel your subscription at any time without any penalties or fees.",
+        icon: FaQuestionCircle,
+      },
     ],
-    "Category 3": [
+    "Server Features": [
       {
-        "title": "Question 7",
-        "answer": "Answer 7",
-        "icon": FaQuestionCircle
+        title: "Do you offer custom server configurations?",
+        answer:
+          "Yes, we provide a wide range of server configurations and options to ensure your Minecraft server meets your specific needs. Our team can assist you in selecting the right hardware and software setup for your requirements.",
+        icon: FaQuestionCircle,
       },
       {
-        "title": "Question 8",
-        "answer": "Answer 8",
-        "icon": FaQuestionCircle
+        title: "Can I install my own plugins and mods?",
+        answer:
+          "Yes, you can install your own plugins and mods on your EasyMinecraftHosting server. Our platform supports a wide range of Minecraft modifications to enhance your gaming experience.",
+        icon: FaQuestionCircle,
       },
       {
-        "title": "Question 9",
-        "answer": "Answer 9",
-        "icon": FaQuestionCircle
-      }
+        title: "Do you provide automatic server backups?",
+        answer:
+          "Absolutely. We offer automatic daily backups of your Minecraft server data, allowing you to quickly restore your server in the event of an issue or data loss.",
+        icon: FaQuestionCircle,
+      },
     ],
-    "Category 4": [
+    "Customer Support": [
       {
-        "title": "Question 10",
-        "answer": "Answer 10",
-        "icon": FaQuestionCircle
+        title: "What is your average support response time?",
+        answer:
+          "At EasyMinecraftHosting, we pride ourselves on our exceptional customer support. Our average support response time is within 30 minutes, ensuring that any issues or questions you have are addressed promptly.",
+        icon: FaQuestionCircle,
       },
       {
-        "title": "Question 11",
-        "answer": "Answer 11",
-        "icon": FaQuestionCircle
+        title: "Do you offer 24/7 technical support?",
+        answer:
+          "Yes, our Minecraft server hosting platform is supported by a team of knowledgeable technicians who are available 24 hours a day, 7 days a week to assist you with any technical issues or questions you may have.",
+        icon: FaQuestionCircle,
       },
       {
-        "title": "Question 12",
-        "answer": "Answer 12",
-        "icon": FaQuestionCircle
-      }
-    ]
+        title: "How can I contact your support team?",
+        answer:
+          "You can reach our support team through various channels, including our live chat, email, and a dedicated support ticket system. We strive to provide you with multiple options to get the assistance you need.",
+        icon: FaQuestionCircle,
+      },
+    ],
   }
+
+  // Component state
+  const [currentCategory, setCurrentCategory] = useState(
+    Object.keys(faqsData)[0]
+  )
 
   return (
     <section
@@ -92,71 +113,115 @@ export default function Faqs() {
         faqs
         container
         mx-auto
-      `}
+        flex
+        items-center
+        md:gap-8
+        flex-col md:flex-row
+        justify-between
+        w-full
+    `}
     >
-
       <div
         className={`
           left
+          w-full md:w-1/2
+          flex-col
         `}
       >
-        <Title />
-          
+        <Title 
+          className="mb-4 text-center md:text-start">
+          Preguntas frecuentes
+        </Title>
+
         <div
           className={`
             buttons
+            flex
+            flex-wrap
+            justify-center
+            md:justify-start
           `}
         >
           {/* Render ButtonAction */}
-          {
-            Object.keys(faqsData).map((category, index) => (
+          {Object.keys(faqsData).map((category, index) => (
+            <div className="p-2" key={index}>
               <ButtonAction
+                onClick={() => setCurrentCategory(category)}
+                href="#"
                 className={`
                   category-btn
                 `}
                 key={index}
+                active={currentCategory === category ? true : false}
               >
                 {category}
               </ButtonAction>
-            ))
-          }
+            </div>
+          ))}
         </div>
-
-        <p
+        <div
           className={`
-            text
+            help-wrapper
+            flex
+            flex-col
+            items-center md:items-start
+            justify-center
+            p-4
           `}
         >
-          Replace me
-        </p>
-
-
-        <ButtonLink
-          className={`
-            cta
-          `}
-        >
-          button link
-        </ButtonLink>
+          <div>
+            <p className="block mb-2">
+              ¿No encuentras lo que estás buscando? Escríbenos!
+            </p>
+          </div>
+          <div className="flex items-center">
+            <div>
+              <ButtonLink
+                href="https://discord.blixerhost.es/"
+                className="w-32"
+                icon={<BiSolidConversation />}
+              >
+                Discord
+              </ButtonLink>
+            </div>
+            <div className="p-4 flex items-center">
+              <GoDotFill 
+                className={`
+                  inline-block
+                  text-xl
+                  text-green-light
+                  align-middl
+                   me-1
+                `}  
+              />
+              <p className={`
+                  inline-block
+                  align-middle
+                  text-2xl
+                  text-green-light
+                `}
+              >
+                online
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-
 
       <div
         className={`
-          right
-          faqs-wrapper
-        `}
+        right
+        faqs-wrapper
+        w-full
+        md:w-1/2
+      `}
       >
-        {
-          faqsData[currentCategory].map((faq, index) => (
-            <DetailsCard>
-
-            </DetailsCard>
-          ))
-        }
-
+        {faqsData[currentCategory].map((faq, index) => (
+          <DetailsCard icon={<faq.icon />} key={index} title={faq.title}>
+            <article>{faq.answer}</article>
+          </DetailsCard>
+        ))}
       </div>
-
     </section>
   )
 }
