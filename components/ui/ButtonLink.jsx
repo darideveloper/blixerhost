@@ -4,7 +4,6 @@ import { fontTitle } from "@/libs/fonts";
 // Components
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import Link from "next/link";
-import { FaDiscord } from "react-icons/fa";
 
 /**
  * Link with button style
@@ -20,6 +19,7 @@ export default function ButtonLink({
   active = false,
   href,
   className = "",
+  icon
 }) {
   return (
     <Link
@@ -45,7 +45,7 @@ export default function ButtonLink({
       `}
       href={href}
     >
-      <span><FaDiscord/></span>
+      <span>{icon}</span>
       {children}
     </Link>
   );

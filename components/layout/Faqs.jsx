@@ -9,6 +9,9 @@ import Title from "@/components/ui/Title";
 import { useState } from "react";
 import { GoDotFill } from "react-icons/go";
 import DetailsCard from "../ui/DetailsCard";
+import { BiSolidConversation } from "react-icons/bi";
+import { FaDiscord } from "react-icons/fa";
+
 export default function Faqs() {
   const faqsData = {
     "General Information": [
@@ -171,6 +174,7 @@ export default function Faqs() {
                 <ButtonLink
                   href="https://discord.blixerhost.es/"
                   className="w-32"
+                  icon={<BiSolidConversation/>}
                 >
                   Discord
                 </ButtonLink>

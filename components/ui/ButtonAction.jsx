@@ -27,9 +27,9 @@ export default function ButtonAction({
       className={`
         button
         border-2
-        border-blue-grey
-        ${active ? "bg-transparent" : "bg-blue-medium hover:bg-transparent"}
-        ${active ? "text-" : "text-blue-dark hover:text-green-dark"}
+        border-blue-dark
+        ${active ? "bg-transparent border-blue-medium text-blue-medium" : "bg-blue-medium hover:bg-transparent"}
+        ${active ? "font-bold" : "text-blue-dark hover:text-blue-medium hover:border-blue-medium"}
         font-weight-bold
         text-2xl
         font-bold
