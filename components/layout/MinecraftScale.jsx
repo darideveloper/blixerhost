@@ -12,26 +12,31 @@ import { FaBolt, FaCheckCircle, FaStar } from "react-icons/fa"
 import Subtitle from "@/components/ui/Subtitle"
 import List from "@/components/ui/List"
 import ButtonLink from "@/components/ui/ButtonLink"
+import Tabs from "@/components/ui/Tabs"
+import Title from "@/components/ui/Title"
 
 
 export default function MinecraftScale() {
 
-  // App state
-  const [selectedPlan, setSelectedPlan] = useState("Económico")
-
+  
   // Use info from minecraftPlans to create a list of recommended plans
-  const recomendedPlans = {
-    "Económico": {
+  const recomendedPlans = [
+    {
+      title: "Económico",
       ...minecraftPlans.find(plan => plan.name === "Dragón del End"),
       description: "Nuestra línea de hardware estándar es la opción perfecta para un servidor vanilla de 5 a 10 jugadores.",
       priceDetails: "Perfecto para un servidor vanilla",
     },
-    "Premium": {
+    {
+      title: "Premium",
       ...minecraftPlans.find(plan => plan.name === "Esmeralda"),
       description: "Nuestra línea de hardware extrema es la opción perfecta para una red de servidores con 40 jugadores o más.",
       priceDetails: "Perfecto para una comunidad grande",
     }
-  }
+  ]
+
+  // App state
+  const [selectedPlan, setSelectedPlan] = useState(recomendedPlans[0])
 
 
   return (
@@ -42,6 +47,37 @@ export default function MinecraftScale() {
         my-6
       `}
     >
+
+      <Title
+        className={`
+          text-center
+        `}
+      >
+        Conoce nuestros planes
+      </Title>
+
+      <p
+        className={`
+          text-sm
+          text-center
+          text-green-dark
+        `}
+      >
+        Minecraft Hosting
+      </p>
+
+      {/* plans tabs */}
+      <Tabs 
+        tabs={recomendedPlans}
+        selectedTab={selectedPlan}
+        setSelectedTab={setSelectedPlan}
+        className={`
+          my-8
+        `}
+      />
+
+
+      {/* Plan info */}
       <article
         className={`
           container
@@ -86,7 +122,7 @@ export default function MinecraftScale() {
               font-bold
             `}
           >
-            {recomendedPlans[selectedPlan].name}
+            {selectedPlan.name}
           </Subtitle>
 
           <p
@@ -103,7 +139,7 @@ export default function MinecraftScale() {
               font-bold
               py-2
               gap-2
-              opacity-60
+              opacity-50
             `}
           >
             <FaStar />
@@ -118,7 +154,7 @@ export default function MinecraftScale() {
               my-4
             `}
           >
-            {recomendedPlans[selectedPlan].price} €
+            {selectedPlan.price} €
           </p>
 
           <p
@@ -127,11 +163,11 @@ export default function MinecraftScale() {
               font-bold
             `}
           >
-            {recomendedPlans[selectedPlan].priceDetails}
+            {selectedPlan.priceDetails}
           </p>
 
           <List
-            items={recomendedPlans[selectedPlan].hardwere.slice(3, 6)}
+            items={selectedPlan.hardwere.slice(3, 6)}
             icon={<FaBolt className="text-blue-dark text-2xl" />}
             className={`
               w-10/12
@@ -141,7 +177,7 @@ export default function MinecraftScale() {
           />
 
           <ButtonLink
-            href={`/minecraft#${recomendedPlans[selectedPlan].name.toLowerCase().replaceAll(" ", "-")}`}
+            href={`/minecraft#${selectedPlan.name.toLowerCase().replaceAll(" ", "-")}`}
             className={`
               w-full
               rounded-t-none
@@ -182,11 +218,11 @@ export default function MinecraftScale() {
               my-4
             `}
           >
-            {recomendedPlans[selectedPlan].description}
+            {selectedPlan.description}
           </p>
 
           <List
-            items={recomendedPlans[selectedPlan].hardwere.slice(0, 3)}
+            items={selectedPlan.hardwere.slice(0, 3)}
             icon={<FaBolt className="text-blue-medium text-2xl" />}
           />
 

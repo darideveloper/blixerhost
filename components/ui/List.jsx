@@ -7,8 +7,6 @@
  */
 export default function List({ items, className, icon }) {
 
-  console.log({items})
-
   return (
     <ul
       className={`
