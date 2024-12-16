@@ -1,5 +1,8 @@
 "use client"
 
+// Libs
+import { useState } from "react"
+
 // Components
 import { FaQuestionCircle } from "react-icons/fa"
 import ButtonAction from "@/components/ui/ButtonAction"
@@ -106,7 +109,7 @@ export default function Faqs() {
         >
           {/* Render ButtonAction */}
           {
-            faqsData.object.keys().map((category, index) => (
+            Object.keys(faqsData).map((category, index) => (
               <ButtonAction
                 className={`
                   category-btn
@@ -133,7 +136,7 @@ export default function Faqs() {
             cta
           `}
         >
-          ButtonLink
+          button link
         </ButtonLink>
       </div>
 

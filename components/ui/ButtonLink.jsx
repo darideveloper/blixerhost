@@ -18,6 +18,7 @@ export default function ButtonLink({ children, active = false, href, className }
   return (
     <Link
       className={`
+        ${className}
         button
         border-2
         border-green-dark 
@@ -33,21 +34,23 @@ export default function ButtonLink({ children, active = false, href, className }
         flex
         items-center
         justify-center
+        gap-2 hover:gap-6
         scale-100
         ${fontTitle.className}
-        ${className}
       `}
       href={href}
     >
-      {children}
-      <p
+      <span>
+        {children}
+      </span>
+      <span
         className={`
           ml-4
           hidden sm:inline-block
         `}
       >
         <FaArrowAltCircleRight/>
-      </p>
+      </span>
     </Link>
   )
 }
