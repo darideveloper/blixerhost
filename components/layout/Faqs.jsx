@@ -127,7 +127,6 @@ export default function Faqs() {
     <>
       <section
         className={`
-        debug
         faqs
         container
         mx-auto
@@ -149,7 +148,7 @@ export default function Faqs() {
           md:w-1/2
         `}
         >
-          <Title isH1={true} className="mb-4 text-center md:text-start">
+          <Title isH1={true} className={`mb-4 text-center md:text-start`}>
             Preguntas frecuentes
           </Title>
 
@@ -204,9 +203,18 @@ export default function Faqs() {
                   Discord
                 </ButtonLink>
               </div>
-              <div className="p-4 flex items-center">
-                <GoDotFill className="inline-block text-xl text-green-light align-middle me-1" />
-                <p className="inline-block align-middle text-2xl text-green-light">
+              <div className={`p-4 flex items-center`}>
+                <GoDotFill
+                  className={`
+                  inline-block
+                  text-xl
+                  text-green-light
+                  align-middle
+                  me-1`}
+                />
+                <p
+                  className={`inline-block align-middle text-2xl text-green-light`}
+                >
                   online
                 </p>
               </div>
@@ -221,7 +229,11 @@ export default function Faqs() {
           w-full
           p-2
           md:w-1/2
-          ${animating ? "opacity-0 transition-opacity duration-500" : "opacity-100"}
+          ${
+            animating
+              ? "opacity-0 transition-opacity duration-500"
+              : "opacity-100 transition-opacity duration-500"
+          }
         `}
         >
           {faqsData[currentCategory].questions.map((faq, index) => (
