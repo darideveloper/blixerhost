@@ -7,7 +7,7 @@ import ButtonLink from "@/components/ui/ButtonLink";
 import Title from "@/components/ui/Title";
 import { useState } from "react";
 import { GoDotFill } from "react-icons/go";
-import DetailsCard from "../ui/DetailsCard";
+import DetailsCard from "@/components/ui/DetailsCard";
 import { BiSolidConversation } from "react-icons/bi";
 import { FaCreditCard } from "react-icons/fa";
 import { FaServer } from "react-icons/fa";

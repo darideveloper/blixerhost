@@ -2,7 +2,6 @@
 import { fontTitle } from "@/libs/fonts";
 
 // Components
-import { FaArrowAltCircleRight } from "react-icons/fa";
 import Link from "next/link";
 
 /**
@@ -12,6 +11,8 @@ import Link from "next/link";
  * @param {React.ReactNode} props.children - Button content (text)
  * @param {boolean} props.active - If true, renders an active button. Default is false
  * @param {string} props.href - Button link
+ * @param {string} props.className - Additional CSS classes
+ * @param {React.ReactNode} props.icon - Icon
  * @returns {JSX.Element} - Component template
  */
 export default function ButtonLink({

@@ -2,10 +2,9 @@
 import { fontTitle } from "@/libs/fonts";
 
 // Components
-import Link from "next/link";
 
 /**
- * Link with button style
+ * Button with action style
  *
  * @param {object} props - Component props
  * @param {React.ReactNode} props.children - Button content (text)
@@ -13,8 +12,11 @@ import Link from "next/link";
  * @param {string} props.href - Button link
  * @param {string} props.className - Additional CSS classes
  * @param {React.ReactNode} props.icon - Icon
- * @returns {JSX.Element} - Component template
+ * @param {function} props.onClick - Callback function for click event
+ * @param {boolean} props.disabled - If true, button is disabled. Default is false
+ * @returns {JSX.Element} - Button component
  */
+
 export default function ButtonAction({
   children,
   active = false,
@@ -22,6 +24,7 @@ export default function ButtonAction({
   className = "",
   icon,
   onClick,
+  disabled = false,
 }) {
   return (
     <button
@@ -53,8 +56,15 @@ export default function ButtonAction({
         scale-100
         ${fontTitle.className}
         ${className}
+        ${
+          disabled
+            ? "opacity-50 cursor-not-allowed border-blue-medium hover:bg-blue-medium hover:text-blue-dark"
+            : ""
+        }
+
       `}
       href={href}
+      disabled={disabled}
     >
       {children}
       <p
