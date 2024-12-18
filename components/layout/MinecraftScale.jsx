@@ -56,7 +56,6 @@ export default function MinecraftScale() {
       className={`
         minecraft-scale
         relative
-        my-6
       `}
     >
 
