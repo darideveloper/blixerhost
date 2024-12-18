@@ -1,17 +1,24 @@
-"use client";
+"use client"
+
+// Icons
+import {
+  FaQuestionCircle,
+  FaCreditCard,
+  FaServer,
+  FaHeadset,
+} from "react-icons/fa"
+import { BiSolidConversation } from "react-icons/bi"
+import { GoDotFill } from "react-icons/go"
+
+// Libs
+import { useState } from "react"
 
 // Components
-import { FaQuestionCircle } from "react-icons/fa";
-import ButtonAction from "@/components/ui/ButtonAction";
-import ButtonLink from "@/components/ui/ButtonLink";
-import Title from "@/components/ui/Title";
-import { useState } from "react";
-import { GoDotFill } from "react-icons/go";
-import DetailsCard from "../ui/DetailsCard";
-import { BiSolidConversation } from "react-icons/bi";
-import { FaCreditCard } from "react-icons/fa";
-import { FaServer } from "react-icons/fa";
-import { FaHeadset } from "react-icons/fa";
+import ButtonAction from "@/components/ui/ButtonAction"
+import ButtonLink from "@/components/ui/ButtonLink"
+import Title from "@/components/ui/Title"
+import DetailsCard from "@/components/ui/DetailsCard"
+
 export default function Faqs() {
   const faqsData = {
     "General Information": {
@@ -106,27 +113,26 @@ export default function Faqs() {
         },
       ],
     },
-  };
+  }
 
   const [currentCategory, setCurrentCategory] = useState(
     Object.keys(faqsData)[0]
-  );
-  const [animating, setAnimating] = useState(false);
+  )
+  const [animating, setAnimating] = useState(false)
 
   const handleCategoryChange = (category) => {
     if (!animating) {
-      setAnimating(true);
+      setAnimating(true)
       setTimeout(() => {
-        setCurrentCategory(category);
-        setAnimating(false);
-      }, 500);
+        setCurrentCategory(category)
+        setAnimating(false)
+      }, 500)
     }
-  };
+  }
 
   return (
-    <>
-      <section
-        className={`
+    <section
+      className={`
         faqs
         container
         mx-auto
@@ -135,10 +141,19 @@ export default function Faqs() {
         md:gap-8
         flex-col
         w-full
-        md:flex-row
-        md:justify-center
-      `}
+    `}
+    >
+      <div
+        className={`
+          left
+          w-full
+          flex
+          flex-col md:flex-row
+          items-center
+          justify-between
+        `}
       >
+
         <div
           className={`
           left
@@ -148,17 +163,23 @@ export default function Faqs() {
           md:w-1/2
         `}
         >
-          <Title isH1={true} className={`mb-4 text-center md:text-start`}>
+          <Title
+            isH1={true}
+            className={`
+              mb-4
+              text-center
+              md:text-start`}
+          >
             Preguntas frecuentes
           </Title>
 
           <div
             className={`
-            buttons
-            flex
-            flex-wrap
-            justify-center
-            md:justify-start
+              buttons
+              flex
+              flex-wrap
+              justify-center
+              md:justify-start
           `}
           >
             {/* Render ButtonAction */}
@@ -180,20 +201,29 @@ export default function Faqs() {
             ))}
           </div>
           <div
-            className={`help-wrapper
-             flex
+            className={`
+              help-wrapper
+              flex
               flex-col
-               items-center
-                justify-center
-                 p-4
-                  md:items-start`}
+              items-center
+              justify-center
+              p-4
+              md:items-start`}
           >
             <div>
-              <p className="block mb-2">
+              <p
+                className={`
+                block
+                mb-2`}
+              >
                 ¿No encuentras lo que estás buscando? Escríbenos!
               </p>
             </div>
-            <div className="flex items-center">
+            <div
+              className={`
+              flex
+              items-center`}
+            >
               <div>
                 <ButtonLink
                   href="https://discord.blixerhost.es/"
@@ -203,7 +233,12 @@ export default function Faqs() {
                   Discord
                 </ButtonLink>
               </div>
-              <div className={`p-4 flex items-center`}>
+              <div
+                className={`
+                p-4
+                flex
+                items-center`}
+              >
                 <GoDotFill
                   className={`
                   inline-block
@@ -213,7 +248,10 @@ export default function Faqs() {
                   me-1`}
                 />
                 <p
-                  className={`inline-block align-middle text-2xl text-green-light`}
+                  className={`inline-block
+                    align-middle
+                    text-2xl
+                    text-green-light`}
                 >
                   online
                 </p>
@@ -229,11 +267,10 @@ export default function Faqs() {
           w-full
           p-2
           md:w-1/2
-          ${
-            animating
+          ${animating
               ? "opacity-0 transition-opacity duration-500"
               : "opacity-100 transition-opacity duration-500"
-          }
+            }
         `}
         >
           {faqsData[currentCategory].questions.map((faq, index) => (
@@ -242,7 +279,7 @@ export default function Faqs() {
             </DetailsCard>
           ))}
         </div>
-      </section>
-    </>
-  );
+      </div>
+    </section>
+  )
 }

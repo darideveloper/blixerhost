@@ -1,27 +1,33 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import ButtonAction from "@/components/ui/ButtonAction";
-import Title from "../ui/Title";
+// Libs
+import { useState } from "react"
+
+// Components
+import ButtonAction from "@/components/ui/ButtonAction"
+import Title from "@/components/ui/Title"
 
 export default function Locations() {
-  // !Very Important: never hardcode api keys this is for dev env only. also this api key is scrapped from github.
-  // use your own api key - this is not my api key
-  const map_api_key = "AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao";
-
   const locations = [
-    { name: "Miami", coordinates: { lat: 25.7741728, lng: -80.19362 } },
-    { name: "Location 2", coordinates: { lat: 34.0522, lng: -118.2437 } },
-    { name: "Location 3", coordinates: { lat: 40.7128, lng: -74.006 } },
-  ];
+    {
+      name: "Miami",
+      embededLink:
+        "https://www.google.com/maps/embed/v1/place?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&q=25.7741728,-80.19362&zoom=12",
+      active: true,
+    },
+    {
+      name: "Próximamente",
+      embededLink:
+        "https://www.google.com/maps/embed/v1/place?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&q=34.0522,-118.2437&zoom=12",
+      active: false,
+    },
+  ]
 
-  const [selectedLocation, setSelectedLocation] = useState(
-    locations[0].coordinates
-  );
+  const [selectedLocation, setSelectedLocation] = useState(locations[0])
 
-  const handleLocationChange = (coordinates) => {
-    setSelectedLocation(coordinates);
-  };
+  const handleLocationChange = (location) => {
+    setSelectedLocation(location)
+  }
 
   return (
     <section
@@ -79,12 +85,12 @@ export default function Locations() {
           {locations.map((location, index) => (
             <ButtonAction
               key={index}
-              onClick={() => handleLocationChange(location.coordinates)}
-              className={`mb-2`}
-              active={
-                selectedLocation.lat === location.coordinates.lat &&
-                selectedLocation.lng === location.coordinates.lng
-              }
+              onClick={() => handleLocationChange(location)}
+              className={`mb-2 transition duration-300 transform ${
+                selectedLocation.name === location.name ? "scale-105" : ""
+              }`}
+              active={selectedLocation.name === location.name}
+              disabled={!location.active}
             >
               {location.name}
             </ButtonAction>
@@ -95,19 +101,20 @@ export default function Locations() {
         className={`
           location-left
           w-full lg:w-2/3
-          
+          transition duration-500 ease-in-out transform ${
+            selectedLocation.embededLink ? "opacity-100" : "opacity-0"
+          }
         `}
       >
         <iframe
-          className={`rounded-md`}
-          src={`https://www.google.com/maps/embed/v1/place?key=${map_api_key}&zoom=12&q=${selectedLocation.lat},${selectedLocation.lng}`}
+          className={`
+            rounded-md
+            h-[600px]
+          `}
+          src={selectedLocation.embededLink}
           width="100%"
-          height="400"
-          // style={{ border: 0 }}
-
-          // allowFullScreen
         />
       </div>
     </section>
-  );
+  )
 }
