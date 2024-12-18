@@ -7,13 +7,16 @@ import { fontBody } from "@/libs/fonts"
 // Data
 import { minecraftPlans } from "@/data/minecraft-plans"
 
-// Components
+// Icon
 import { FaBolt, FaCheckCircle, FaStar } from "react-icons/fa"
+
+// Components
 import Subtitle from "@/components/ui/Subtitle"
 import List from "@/components/ui/List"
 import ButtonLink from "@/components/ui/ButtonLink"
 import Tabs from "@/components/ui/Tabs"
 import Title from "@/components/ui/Title"
+import Image from "next/image"
 
 
 export default function MinecraftScale() {
@@ -58,6 +61,22 @@ export default function MinecraftScale() {
         relative
       `}
     >
+
+      <Image
+        src="/images/minecraft-icon-bg.webp"
+        alt="Minecraft icon"
+        width={800}
+        height={800}
+        className={`
+          bg-image
+          absolute
+          -bottom-32
+          left-0
+          -z-10
+          h-full
+          w-auto
+        `}
+      />
 
       <Title
         className={`
@@ -122,7 +141,6 @@ export default function MinecraftScale() {
             pt-6
             w-full
             max-w-xl
-            mx-auto
             bg-blue-medium
             rounded-lg
             flex
