@@ -38,6 +38,18 @@ export default function MinecraftScale() {
   // App state
   const [selectedPlan, setSelectedPlan] = useState(recomendedPlans[0])
 
+  const [animating, setAnimating] = useState(false)
+
+  const handleSelectedPlanChanged = (planId) => {
+    if (!animating) {
+      setAnimating(true)
+      setTimeout(() => {
+        setSelectedPlan(planId)
+        setAnimating(false)
+      }, 500)
+    }
+  }
+
 
   return (
     <section
@@ -70,7 +82,7 @@ export default function MinecraftScale() {
       <Tabs 
         tabs={recomendedPlans}
         selectedTab={selectedPlan}
-        setSelectedTab={setSelectedPlan}
+        setSelectedTab={handleSelectedPlanChanged}
         className={`
           my-8
         `}
@@ -87,6 +99,13 @@ export default function MinecraftScale() {
           items-center
           justify-between
           gap-12
+          duration-300
+          ${animating 
+            ?
+              'opacity-0'
+            :
+              'opacity-100'
+          }
         `}
       >
 
@@ -105,6 +124,8 @@ export default function MinecraftScale() {
             justify-center
             my-4
             text-blue-dark
+            duration-300
+            ${animating && '-translate-x-[-300px]'}
           `}
         >
 
@@ -197,6 +218,8 @@ export default function MinecraftScale() {
             info
             w-full
             max-w-2xl
+            duration-300
+            ${animating && 'translate-x-[-300px]'}
           `}
         >
           <h4
