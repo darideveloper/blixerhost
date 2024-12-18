@@ -1,7 +1,6 @@
 // Libs
-import { fontTitle } from "@/libs/fonts";
+import { fontTitle } from "@/libs/fonts"
 
-// Components
 
 /**
  * Button with action style
@@ -16,11 +15,9 @@ import { fontTitle } from "@/libs/fonts";
  * @param {boolean} props.disabled - If true, button is disabled. Default is false
  * @returns {JSX.Element} - Button component
  */
-
 export default function ButtonAction({
   children,
   active = false,
-  href,
   className = "",
   icon,
   onClick,
@@ -36,11 +33,15 @@ export default function ButtonAction({
         ${
           active
             ? "bg-transparent border-blue-medium text-blue-medium"
+            : disabled
+            ? "bg-blue-medium opacity-50"
             : "bg-blue-medium hover:bg-transparent"
         }
         ${
           active
             ? "font-bold"
+            : disabled
+            ? "text-blue-dark"
             : "text-blue-dark hover:text-blue-medium hover:border-blue-medium"
         }
         font-weight-bold
@@ -56,14 +57,7 @@ export default function ButtonAction({
         scale-100
         ${fontTitle.className}
         ${className}
-        ${
-          disabled
-            ? "opacity-50 cursor-not-allowed border-blue-medium hover:bg-blue-medium hover:text-blue-dark"
-            : ""
-        }
-
       `}
-      href={href}
       disabled={disabled}
     >
       {children}
@@ -76,5 +70,5 @@ export default function ButtonAction({
         {icon}
       </p>
     </button>
-  );
+  )
 }

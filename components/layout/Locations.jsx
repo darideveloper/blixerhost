@@ -1,8 +1,11 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import ButtonAction from "@/components/ui/ButtonAction";
-import Title from "@/components/ui/Title";
+// Libs
+import { useState } from "react"
+
+// Components
+import ButtonAction from "@/components/ui/ButtonAction"
+import Title from "@/components/ui/Title"
 
 export default function Locations() {
   const locations = [
@@ -18,13 +21,13 @@ export default function Locations() {
         "https://www.google.com/maps/embed/v1/place?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&q=34.0522,-118.2437&zoom=12",
       active: false,
     },
-  ];
+  ]
 
-  const [selectedLocation, setSelectedLocation] = useState(locations[0]);
+  const [selectedLocation, setSelectedLocation] = useState(locations[0])
 
   const handleLocationChange = (location) => {
-    setSelectedLocation(location);
-  };
+    setSelectedLocation(location)
+  }
 
   return (
     <section
@@ -83,7 +86,9 @@ export default function Locations() {
             <ButtonAction
               key={index}
               onClick={() => handleLocationChange(location)}
-              className={`mb-2`}
+              className={`mb-2 transition duration-300 transform ${
+                selectedLocation.name === location.name ? "scale-105" : ""
+              }`}
               active={selectedLocation.name === location.name}
               disabled={!location.active}
             >
@@ -96,6 +101,9 @@ export default function Locations() {
         className={`
           location-left
           w-full lg:w-2/3
+          transition duration-500 ease-in-out transform ${
+            selectedLocation.embededLink ? "opacity-100" : "opacity-0"
+          }
         `}
       >
         <iframe
@@ -108,5 +116,5 @@ export default function Locations() {
         />
       </div>
     </section>
-  );
+  )
 }
