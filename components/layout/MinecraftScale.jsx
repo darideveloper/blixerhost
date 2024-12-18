@@ -78,14 +78,22 @@ export default function MinecraftScale() {
       </p>
 
       {/* plans tabs */}
-      <Tabs 
-        tabs={recomendedPlans}
-        selectedTab={selectedPlan}
-        setSelectedTab={handleSelectedPlanChanged}
+      <div
         className={`
-          my-8
+          tabs-wrapper
         `}
-      />
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <Tabs 
+          tabs={recomendedPlans}
+          selectedTab={selectedPlan}
+          setSelectedTab={handleSelectedPlanChanged}
+          className={`
+            my-8
+          `}
+        />
+      </div>
 
 
       {/* Plan info */}
@@ -135,35 +143,51 @@ export default function MinecraftScale() {
             `}
           />
 
-          <Subtitle
+          <div
             className={`
-              plan-name
-              font-bold
+              subtitle-wrapper
             `}
+            data-aos="fade-down"
+            data-aos-delay="200"
           >
-            {selectedPlan.name}
-          </Subtitle>
+            <Subtitle
+              className={`
+                plan-name
+                font-bold
+              `}
+            >
+              {selectedPlan.name}
+            </Subtitle>
+          </div>
 
-          <p
+          <div 
             className={`
-              plan-recommendet-tag
-              w-[101%]
-              bg-blue-dark
-              rounded-lg
-              text-grey
-              flex
-              items-center
-              justify-center
-              txt-xl
-              font-bold
-              py-2
-              gap-2
-              opacity-50
+              recommended-wrapper
+              w-full
             `}
+            data-aos="fade-down"
+            data-aos-delay="600"
           >
-            <FaStar />
-            Plan recomendado
-          </p>
+            <p
+              className={`
+                recommended
+                w-[101%]
+                bg-blue-dark
+                text-grey
+                flex
+                items-center
+                justify-center
+                txt-xl
+                font-bold
+                py-2
+                gap-2
+                opacity-70
+              `}
+            >
+              <FaStar />
+              Plan recomendado
+            </p>
+          </div>
 
           <p
             className={`
@@ -172,6 +196,8 @@ export default function MinecraftScale() {
               font-bold
               my-4
             `}
+            data-aos="fade-down"
+            data-aos-delay="1000"
           >
             {selectedPlan.price} €
           </p>
@@ -181,6 +207,8 @@ export default function MinecraftScale() {
               price-details
               font-bold
             `}
+            data-aos="fade-down"
+            data-aos-delay="1400"
           >
             {selectedPlan.priceDetails}
           </p>
@@ -195,20 +223,29 @@ export default function MinecraftScale() {
             `}
           />
 
-          <ButtonLink
-            href={`/minecraft#${selectedPlan.name.toLowerCase().replaceAll(" ", "-")}`}
+          <div 
             className={`
+              cta-wrapper
               w-full
-              rounded-t-none
-              hover:!border-blue-light
-              hover:!bg-blue-light
-              hover:!text-blue-dark
-              py-4
-              text-2xl
             `}
+            data-aos="zoom-in"
+            data-aos-delay="2100"
           >
-            Comenzar
-          </ButtonLink>
+            <ButtonLink
+              href={`/minecraft#${selectedPlan.name.toLowerCase().replaceAll(" ", "-")}`}
+              className={`
+                w-full
+                rounded-t-none
+                hover:!border-blue-light
+                hover:!bg-blue-light
+                hover:!text-blue-dark
+                py-4
+                text-2xl
+              `}
+            >
+              Comenzar
+            </ButtonLink>
+          </div>
 
         </div>
 
