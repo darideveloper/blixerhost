@@ -1,8 +1,8 @@
 // Libs
-import { fontTitle } from "@/libs/fonts"
+import { fontTitle } from "@/libs/fonts";
 
 // Components
-import Link from "next/link"
+import Link from "next/link";
 
 /**
  * Link with button style
@@ -11,6 +11,8 @@ import Link from "next/link"
  * @param {React.ReactNode} props.children - Button content (text)
  * @param {boolean} props.active - If true, renders an active button. Default is false
  * @param {string} props.href - Button link
+ * @param {string} props.className - Additional CSS classes
+ * @param {React.ReactNode} props.icon - Icon
  * @returns {JSX.Element} - Component template
  */
 export default function ButtonLink({
@@ -41,15 +43,11 @@ export default function ButtonLink({
         scale-100
         ${fontTitle.className}
         ${className}
-        flex
-        items-center
-        justify-center
-        gap-2 hover:gap-6
       `}
       href={href}
     >
-      {children}
       <span>{icon}</span>
+      {children}
     </Link>
-  )
+  );
 }
