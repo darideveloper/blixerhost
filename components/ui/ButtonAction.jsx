@@ -1,24 +1,27 @@
 // Libs
-import { fontTitle } from "@/libs/fonts";
+import { fontTitle } from "@/libs/fonts"
 
-// Components
-import { FaArrowAltCircleRight } from "react-icons/fa";
 
 /**
- * Link with button style
+ * Button with action style
  *
  * @param {object} props - Component props
  * @param {React.ReactNode} props.children - Button content (text)
  * @param {boolean} props.active - If true, renders an active button. Default is false
+ * @param {string} props.href - Button link
  * @param {string} props.className - Additional CSS classes
- * @param {function} props.onClick - Button click event
- * @returns {JSX.Element} - Component template
+ * @param {React.ReactNode} props.icon - Icon
+ * @param {function} props.onClick - Callback function for click event
+ * @param {boolean} props.disabled - If true, button is disabled. Default is false
+ * @returns {JSX.Element} - Button component
  */
 export default function ButtonAction({
   children,
   active = false,
   className = "",
+  icon,
   onClick,
+  disabled = false,
 }) {
   return (
     <button
@@ -27,8 +30,20 @@ export default function ButtonAction({
         button
         border-2
         border-blue-dark
-        ${active ? "bg-transparent border-blue-medium text-blue-medium" : "bg-blue-medium hover:bg-transparent"}
-        ${active ? "font-bold" : "text-blue-dark hover:text-blue-medium hover:border-blue-medium"}
+        ${
+          active
+            ? "bg-transparent border-blue-medium text-blue-medium"
+            : disabled
+            ? "bg-blue-medium opacity-50"
+            : "bg-blue-medium hover:bg-transparent"
+        }
+        ${
+          active
+            ? "font-bold"
+            : disabled
+            ? "text-blue-dark"
+            : "text-blue-dark hover:text-blue-medium hover:border-blue-medium"
+        }
         font-weight-bold
         text-2xl
         font-bold
@@ -43,6 +58,7 @@ export default function ButtonAction({
         ${fontTitle.className}
         ${className}
       `}
+      disabled={disabled}
     >
       {children}
       <p
@@ -51,8 +67,8 @@ export default function ButtonAction({
           hidden sm:inline-block
         `}
       >
-        <FaArrowAltCircleRight />
+        {icon}
       </p>
     </button>
-  );
+  )
 }
