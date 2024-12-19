@@ -73,7 +73,6 @@ export default function HeroSlider() {
                 flex
                 items-center
                 justify-center
-                opacity-10
                 overflow-visible
               `}
             >
