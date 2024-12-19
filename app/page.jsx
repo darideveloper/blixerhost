@@ -14,7 +14,6 @@ export default function Home() {
       <MinecraftScale />
       <Faqs />
       <Locations />
-      <TailwindColorPalette/>
     </>
   )
 }
