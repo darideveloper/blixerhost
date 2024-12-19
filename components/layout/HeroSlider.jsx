@@ -84,7 +84,7 @@ export default function HeroSlider() {
                 height={1000}
                 className={`
                   bg-image
-                  w-1/4
+                  w-1/2 md:w-1/4
                   h-auto
                   animate-ping
                 `}
