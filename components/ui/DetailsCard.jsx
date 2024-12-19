@@ -27,12 +27,13 @@ const DetailsCard = ({ title, children, icon, className }) => {
   return (
     <div
       className={`
-          bg-grey
-          text-black
-          my-4 
-          rounded 
-          ${isOpen && "border-b-2"}
-          ${className}`}
+        bg-grey
+        text-black
+        my-4 
+        rounded 
+        ${isOpen && "border-b-2"}
+        ${className}
+      `}
     >
       <button
         className={`
