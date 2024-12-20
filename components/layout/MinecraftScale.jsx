@@ -60,6 +60,7 @@ export default function MinecraftScale() {
         minecraft-scale
         relative
       `}
+      id="minecraft-scale"
     >
 
       <Image

@@ -8,6 +8,7 @@ import { RiMenu3Line, RiCloseLine } from "react-icons/ri"
 // Libs
 import { useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 
 // Components
 import NavItem from "@/components/ui/NavItem"
@@ -18,12 +19,12 @@ export default function Header() {
   const navigationItems = [
     {
       type: "link",
-      href: "#minecraft",
+      href: "/#minecraft-scale",
       label: "Alojamiento de Minecraft",
     },
     {
       type: "link",
-      href: "#bots",
+      href: "/bots",
       label: "Bots de Discord",
     },
     {
@@ -90,14 +91,16 @@ export default function Header() {
               items-center
               space-x-6`}
             >
-              <Image
-                src="/images/logo.webp"
-                alt="BlixerHost Logo"
-                width={200}
-                height={45}
-                className={`
-                  w-16`}
-              />
+              <Link href={"/"}>
+                <Image
+                  src="/images/logo.webp"
+                  alt="BlixerHost Logo"
+                  width={200}
+                  height={45}
+                  className={`
+                    w-16`}
+                />
+              </Link>
               <div
                 className={`
                 hidden

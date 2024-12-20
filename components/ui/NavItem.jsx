@@ -67,7 +67,7 @@ const NavItem = ({ item, isMobile = false, className = "" }) => {
           href={item.href}
           active={false}
           className={`
-            hover:bg-blue-dark
+            hover:border-white
             hover:text-white
             ${isMobile && "w-full"}
             ${className}`}
