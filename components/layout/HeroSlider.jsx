@@ -98,9 +98,9 @@ export default function HeroSlider() {
                 <ButtonLink
                   href={heroSlide.ctaLink}
                   className={`
-                      primary
-                      mt-4
-                    `}
+                    primary
+                    mt-4
+                  `}
                 >
                   Ver planes
                 </ButtonLink>

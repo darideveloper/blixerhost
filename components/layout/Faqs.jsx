@@ -131,9 +131,8 @@ export default function Faqs() {
   }
 
   return (
-    <>
-      <section
-        className={`
+    <section
+      className={`
         faqs
         container
         mx-auto
@@ -142,9 +141,17 @@ export default function Faqs() {
         md:gap-8
         flex-col
         w-full
-        md:flex-row
-        md:justify-center
-      `}
+    `}
+    >
+      <div
+        className={`
+          left
+          w-full
+          flex
+          flex-col md:flex-row
+          items-center
+          justify-between
+        `}
       >
         <div
           className={`
@@ -272,7 +279,7 @@ export default function Faqs() {
             </DetailsCard>
           ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }

@@ -15,6 +15,7 @@ import { MdOutlineNavigateNext } from "react-icons/md"
  * @returns {JSX.Element} - Details card component
  */
 const DetailsCard = ({ title, children, icon, className }) => {
+  // Component state
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleAccordion = () => {
@@ -86,6 +87,5 @@ const DetailsCard = ({ title, children, icon, className }) => {
     </div>
   )
 }
-
 
 export default DetailsCard
