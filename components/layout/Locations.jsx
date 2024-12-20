@@ -41,15 +41,14 @@ export default function Locations() {
         items-center
         gap-4
       `}
-      data-aos="fade-up"
-      data-aos-delay="500"
     >
       <div
         className={`
-        location-right 
-        flex-col
-        w-full lg:w-1/3
+          location-right 
+          flex-col
+          w-full lg:w-1/3
         `}
+        data-aos="fade-up"
       >
         <Title
           className={`
@@ -105,6 +104,8 @@ export default function Locations() {
             selectedLocation.embededLink ? "opacity-100" : "opacity-0"
           }
         `}
+        data-aos="fade-down"
+        data-aos-delay="400"
       >
         <iframe
           className={`

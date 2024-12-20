@@ -15,9 +15,11 @@ import { MdOutlineNavigateNext } from "react-icons/md"
  * @returns {JSX.Element} - Details card component
  */
 const DetailsCard = ({ title, children, icon, className }) => {
+
   // Component state
   const [isOpen, setIsOpen] = useState(false)
 
+  // Toggle accordion / handle click event
   const toggleAccordion = () => {
     setIsOpen(!isOpen)
   }
@@ -25,12 +27,13 @@ const DetailsCard = ({ title, children, icon, className }) => {
   return (
     <div
       className={`
-          bg-grey
-          text-black
-          my-4 
-          rounded 
-          ${isOpen && "border-b-2"}
-          ${className}`}
+        bg-grey
+        text-black
+        my-4 
+        rounded 
+        ${isOpen && "border-b-2"}
+        ${className}
+      `}
     >
       <button
         className={`

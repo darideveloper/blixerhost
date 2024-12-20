@@ -5,6 +5,7 @@ import { fontTitle } from "@/libs/fonts"
 import Link from "next/link"
 import { FaArrowAltCircleRight } from "react-icons/fa"
 
+
 /**
  * Link with button style
  *
@@ -21,7 +22,8 @@ export default function ButtonLink({
   active = false,
   href,
   className = "",
-  icon = <FaArrowAltCircleRight />,
+  icon = <FaArrowAltCircleRight />
+
 }) {
   return (
     <Link
@@ -44,11 +46,15 @@ export default function ButtonLink({
         scale-100
         ${fontTitle.className}
         ${className}
+        flex
+        items-center
+        justify-center
+        gap-2 hover:gap-6
       `}
       href={href}
     >
-      <span>{icon}</span>
       {children}
+      <span>{icon}</span>
     </Link>
   )
 }

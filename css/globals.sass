@@ -18,8 +18,12 @@ body
 .debug
   border: 1px solid red
 
-*
-  // border: 1px solid red
+.container
+  padding: 0 1.5rem
+  max-width: 1300px
+
+section
+  margin: 200px auto
 
 // swipper custom styles
 .swiper-button-next, .swiper-button-prev
@@ -53,3 +57,16 @@ body
 
   &:hover
     background: $blue-light
+
+.animate-ping-slow
+  animation: scale 1s infinite ease-in-out alternate
+
+@keyframes scale
+  from
+    transform: scale(1)
+    opacity: 0.05
+    filter: blur(2px)
+  to
+    transform: scale(1.75)
+    opacity: 0.1
+    filter: blur(0px)
