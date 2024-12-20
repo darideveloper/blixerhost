@@ -18,12 +18,12 @@ export default function Header() {
   const navigationItems = [
     {
       type: "link",
-      href: "#minecraft",
+      href: "/#minecraft-scale",
       label: "Alojamiento de Minecraft",
     },
     {
       type: "link",
-      href: "#bots",
+      href: "/bots",
       label: "Bots de Discord",
     },
     {
