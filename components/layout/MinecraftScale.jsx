@@ -7,13 +7,16 @@ import { fontBody } from "@/libs/fonts"
 // Data
 import { minecraftPlans } from "@/data/minecraft-plans"
 
-// Components
+// Icon
 import { FaBolt, FaCheckCircle, FaStar } from "react-icons/fa"
+
+// Components
 import Subtitle from "@/components/ui/Subtitle"
 import List from "@/components/ui/List"
 import ButtonLink from "@/components/ui/ButtonLink"
 import Tabs from "@/components/ui/Tabs"
 import Title from "@/components/ui/Title"
+import Image from "next/image"
 
 
 export default function MinecraftScale() {
@@ -38,15 +41,42 @@ export default function MinecraftScale() {
   // App state
   const [selectedPlan, setSelectedPlan] = useState(recomendedPlans[0])
 
+  const [animating, setAnimating] = useState(false)
+
+  const handleSelectedPlanChanged = (planId) => {
+    if (!animating) {
+      setAnimating(true)
+      setTimeout(() => {
+        setSelectedPlan(planId)
+        setAnimating(false)
+      }, 500)
+    }
+  }
+
 
   return (
     <section
       className={`
         minecraft-scale
         relative
-        my-6
       `}
     >
+
+      <Image
+        src="/images/minecraft-icon-bg.webp"
+        alt="Minecraft icon"
+        width={800}
+        height={800}
+        className={`
+          bg-image
+          absolute
+          -bottom-32
+          left-0
+          -z-10
+          h-full
+          w-auto
+        `}
+      />
 
       <Title
         className={`
@@ -67,14 +97,22 @@ export default function MinecraftScale() {
       </p>
 
       {/* plans tabs */}
-      <Tabs 
-        tabs={recomendedPlans}
-        selectedTab={selectedPlan}
-        setSelectedTab={setSelectedPlan}
+      <div
         className={`
-          my-8
+          tabs-wrapper
         `}
-      />
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <Tabs 
+          tabs={recomendedPlans}
+          selectedTab={selectedPlan}
+          setSelectedTab={handleSelectedPlanChanged}
+          className={`
+            my-8
+          `}
+        />
+      </div>
 
 
       {/* Plan info */}
@@ -87,6 +125,13 @@ export default function MinecraftScale() {
           items-center
           justify-between
           gap-12
+          duration-300
+          ${animating 
+            ?
+              'opacity-0'
+            :
+              'opacity-100'
+          }
         `}
       >
 
@@ -96,7 +141,6 @@ export default function MinecraftScale() {
             pt-6
             w-full
             max-w-xl
-            mx-auto
             bg-blue-medium
             rounded-lg
             flex
@@ -105,6 +149,8 @@ export default function MinecraftScale() {
             justify-center
             my-4
             text-blue-dark
+            duration-300
+            ${animating && '-translate-x-[-300px]'}
           `}
         >
 
@@ -115,35 +161,51 @@ export default function MinecraftScale() {
             `}
           />
 
-          <Subtitle
+          <div
             className={`
-              plan-name
-              font-bold
+              subtitle-wrapper
             `}
+            data-aos="fade-down"
+            data-aos-delay="200"
           >
-            {selectedPlan.name}
-          </Subtitle>
+            <Subtitle
+              className={`
+                plan-name
+                font-bold
+              `}
+            >
+              {selectedPlan.name}
+            </Subtitle>
+          </div>
 
-          <p
+          <div 
             className={`
-              plan-recommendet-tag
-              w-[101%]
-              bg-blue-dark
-              rounded-lg
-              text-grey
-              flex
-              items-center
-              justify-center
-              txt-xl
-              font-bold
-              py-2
-              gap-2
-              opacity-50
+              recommended-wrapper
+              w-full
             `}
+            data-aos="fade-down"
+            data-aos-delay="600"
           >
-            <FaStar />
-            Plan recomendado
-          </p>
+            <p
+              className={`
+                recommended
+                w-[101%]
+                bg-blue-dark
+                text-grey
+                flex
+                items-center
+                justify-center
+                txt-xl
+                font-bold
+                py-2
+                gap-2
+                opacity-70
+              `}
+            >
+              <FaStar />
+              Plan recomendado
+            </p>
+          </div>
 
           <p
             className={`
@@ -152,6 +214,8 @@ export default function MinecraftScale() {
               font-bold
               my-4
             `}
+            data-aos="fade-down"
+            data-aos-delay="1000"
           >
             {selectedPlan.price} €
           </p>
@@ -161,6 +225,8 @@ export default function MinecraftScale() {
               price-details
               font-bold
             `}
+            data-aos="fade-down"
+            data-aos-delay="1400"
           >
             {selectedPlan.priceDetails}
           </p>
@@ -175,20 +241,29 @@ export default function MinecraftScale() {
             `}
           />
 
-          <ButtonLink
-            href={`/minecraft#${selectedPlan.name.toLowerCase().replaceAll(" ", "-")}`}
+          <div 
             className={`
+              cta-wrapper
               w-full
-              rounded-t-none
-              hover:!border-blue-light
-              hover:!bg-blue-light
-              hover:!text-blue-dark
-              py-4
-              text-2xl
             `}
+            data-aos="zoom-in"
+            data-aos-delay="2100"
           >
-            Comenzar
-          </ButtonLink>
+            <ButtonLink
+              href={`/minecraft#${selectedPlan.name.toLowerCase().replaceAll(" ", "-")}`}
+              className={`
+                w-full
+                rounded-t-none
+                hover:!border-blue-light
+                hover:!bg-blue-light
+                hover:!text-blue-dark
+                py-4
+                text-2xl
+              `}
+            >
+              Comenzar
+            </ButtonLink>
+          </div>
 
         </div>
 
@@ -197,6 +272,8 @@ export default function MinecraftScale() {
             info
             w-full
             max-w-2xl
+            duration-300
+            ${animating && 'translate-x-[-300px]'}
           `}
         >
           <h4

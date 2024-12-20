@@ -1,4 +1,5 @@
 // Page sections
+import AnimatedBg from "@/components/layout/AnimatedBg"
 import HeroSlider from "@/components/layout/HeroSlider"
 import MinecraftScale from "@/components/layout/MinecraftScale"
 import Faqs from "@/components/layout/Faqs"
@@ -8,11 +9,11 @@ import TailwindColorPalette from "@/components/layout/TailwindColorPalette "
 export default function Home() {
   return (
     <>
+      <AnimatedBg />
       <HeroSlider />
       <MinecraftScale />
       <Faqs />
       <Locations />
-      <TailwindColorPalette/>
     </>
   )
 }

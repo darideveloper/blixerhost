@@ -145,13 +145,14 @@ export default function Faqs() {
     >
       <div
         className={`
-          left
+          content
           w-full
           flex
           flex-col md:flex-row
           items-center
           justify-between
         `}
+        data-aos="fade-up"
       >
 
         <div
@@ -184,7 +185,12 @@ export default function Faqs() {
           >
             {/* Render ButtonAction */}
             {Object.keys(faqsData).map((category, index) => (
-              <div className="p-2" key={index}>
+              <div
+                className="p-2"
+                key={index}
+                data-aos="zoom-in"
+                data-aos-delay={500 + index * 100}
+              >
                 <ButtonAction
                   onClick={() => handleCategoryChange(category)}
                   href="#"
@@ -194,6 +200,7 @@ export default function Faqs() {
                   key={index}
                   active={currentCategory === category ? true : false}
                   icon={faqsData[category].icon}
+                  index={index}
                 >
                   {category}
                 </ButtonAction>
@@ -260,25 +267,47 @@ export default function Faqs() {
           </div>
         </div>
 
-        <div
+        <div 
           className={`
-          right
-          faqs-wrapper
-          w-full
-          p-2
-          md:w-1/2
-          ${animating
-              ? "opacity-0 transition-opacity duration-500"
-              : "opacity-100 transition-opacity duration-500"
-            }
-        `}
+            right
+            faqs-wrapper
+             w-full
+            p-2
+            md:w-1/2
+          `}
+          data-aos="fade-down"
+          data-aos-delay="400"
         >
-          {faqsData[currentCategory].questions.map((faq, index) => (
-            <DetailsCard icon={faq.icon} key={index} title={faq.title}>
-              <article>{faq.answer}</article>
-            </DetailsCard>
-          ))}
+          <div
+            className={`
+            faqs
+            w-full
+            ${animating
+                ? "opacity-0 transition-opacity duration-500"
+                : "opacity-100 transition-opacity duration-500"
+              }
+            `}
+          >
+            {faqsData[currentCategory].questions.map((faq, index) => (
+              <div
+                className={`
+                  details-wrapper
+                `}
+                data-aos="zoom-out"
+                data-aos-delay={Object.keys(faqsData).length * 350 + index * 150}
+                key={index}
+              >
+                <DetailsCard icon={faq.icon} title={faq.title} index={index}>
+                  <article>{faq.answer}</article>
+                </DetailsCard>
+              </div>
+            ))}
+          </div>
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> cd3491b1ec55f6ac0d3708ed7b6a7a1d0a1f26f4
       </div>
     </section>
   )

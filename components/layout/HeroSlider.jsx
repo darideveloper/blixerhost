@@ -7,6 +7,7 @@ import { Navigation, A11y, Autoplay } from "swiper/modules"
 // Components
 import Title from '@/components/ui/Title'
 import ButtonLink from '@/components/ui/ButtonLink'
+import Image from 'next/image'
 
 import "swiper/css"
 import "swiper/css/navigation"
@@ -18,11 +19,13 @@ export default function HeroSlider() {
       title: "Alojamiento de Minecraft",
       text: "Ofrecemos los mejores servidores para hosting de minecraft, disponibles 24/7 a costos accesibles desde $1.00 / mes",
       ctaLink: "#minecraft-scale",
+      image: "minecraft-sword.webp",
     },
     {
       title: "Bots de Discord",
       text: "Potencia tu servidor de Discord con bots personalizados que automatizan, interactúan y elevan tu comunidad al siguiente nivel.",
       ctaLink: "/bots",
+      image: "discord-logo.webp",
     },
   ]
 
@@ -32,6 +35,7 @@ export default function HeroSlider() {
         hero-slider
         container
         mx-auto
+        !mt-20
       `}
     >
       <Swiper
@@ -46,7 +50,46 @@ export default function HeroSlider() {
       >
         {/* Render each slide */}
         {heroSlides.map((heroSlide, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide
+            key={index}
+            className={`
+              hero-slide
+              relative
+              py-12
+            `}
+          >
+            <div
+              className={`
+                bg-image-wrapper
+                absolute
+                top-1/2
+                left-1/2
+                transform
+                -translate-x-1/2
+                -translate-y-1/2
+                w-full
+                h-full
+                -z-10
+                flex
+                items-center
+                justify-center
+                overflow-visible
+              `}
+            >
+
+              <Image 
+                src={`/images/${heroSlide.image}`}
+                alt={heroSlide.title}
+                width={1000}
+                height={1000}
+                className={`
+                  bg-image
+                  w-1/2 md:w-1/4
+                  h-auto
+                  animate-ping
+                `}
+              />
+            </div>
             <div
               className={`
                   content
