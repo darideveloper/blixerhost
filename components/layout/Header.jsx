@@ -34,7 +34,7 @@ export default function Header() {
     },
     {
       type: "icon",
-      href: "#alojamiento-de-minecraft",
+      href: "",
       icon: FaXTwitter,
       label: "Twitter",
     },
