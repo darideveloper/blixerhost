@@ -280,7 +280,7 @@ export default function MinecraftScale() {
           <h4
             className={`
               info-title
-              text-xl
+              text-2xl
               font-bold
               ${fontBody.className}
               text-blue-medium
