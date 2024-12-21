@@ -1,16 +1,57 @@
-import Image from 'next/image'
+// Components
 import Link from 'next/link'
+import Socials from '@/components/ui/Socials'
+import Logo from '@/components/ui/Logo'
 
 export default function Footer() {
+
+  const links = [
+    {
+      "category": "Alojamiento de minecraft",
+      "links": [
+        {
+          "text": "Plan Económico",
+          "href": "/minecraft/#economico"
+        },
+        {
+          "text": "Plan Premium",
+          "href": "/minecraft/#premium"
+        }
+      ]
+    },
+    {
+      "category": "Bots de Discord",
+      "links": [
+        {
+          "text": "300MB Discord Bot",
+          "href": "/bots/#300mb-bot"
+        },
+        {
+          "text": "500MB Discord Bot",
+          "href": "/bots/#500mb-bot"
+        },
+        {
+          "text": "1GB Discord Bot",
+          "href": "/bots/#1gb-bot"
+        },
+        {
+          "text": "Discord Bot Unlimited",
+          "href": "/bots/#unlimited-bot"
+        }
+      ]
+
+    }
+  ]
+
   return (
     <footer
       className={`
         footer
-        bg-blue-medium
-        text-blue-dark
+        bg-blue-alternative
+        text-white
         font-bold
         text-sm
-        py-2
+        py-6
         text-center md:text-left
       `}
     >
@@ -19,7 +60,7 @@ export default function Footer() {
           container
           mx-auto
           flex
-          flex-col md:flex-row
+          flex-col-reverse lg:flex-row
           items-center
           justify-between
           gap-2
@@ -28,72 +69,122 @@ export default function Footer() {
         <div 
           className={`
             left
+            mt-8 lg:mt-0
             flex
-            flex-col md:flex-row
-            items-center
+            flex-col
+            items-center sm:items-start
             justify-center
-            gap-2
+            gap-10
           `}
         >
 
-          <Link 
-            href="/"
+          <div
             className={`
-              duration-200
-              hover:opacity-75
+              content
+              flex
+              flex-col sm:flex-row
+              items-center
+              justify-center
+              gap-4 sm:gap-20
             `}
           >
-            <Image 
-              src="/images/logo.webp"
-              alt="Logo"
-              width={200}
-              height={200}
+            <Logo />
+
+            <p
               className={`
-                w-24
-                h-auto          
+                slogan
+                ml-4
+                text-md
               `}
-            />
-          </Link>
+            >
+                Llevamos tus ideas
+                <br 
+                  className={`
+                    hidden md:block
+                  `}
+                />
+                a PRODUCCIÓN
+            </p>
+
+            <Socials />
+          </div>
 
           <p
             className={`
-              slogan
-              ml-4
+              copy
+              text-sm
+              font-normal
+              text-center
             `}
           >
-              Comienza tu aventura 
-              <br 
-                className={`
-                  hidden md:block
-                `}
-              />
-              a un click de distancia
+            &copy; 2025 BlixerHost - Todos los derechos reservados
+            &nbsp;|&nbsp;
+            <Link 
+              href="https://linktr.ee/daridev"
+              target="_blank"
+              className={`
+                duration-200
+                hover:opacity-75
+              `}
+            >
+              Powered by DariDev Team
+            </Link>
           </p>
         </div>
 
-        <p
+        <div
           className={`
-            copy
-            right
+            nav
+            flex
+            flex-col sm:flex-row
+            items-start
+            justify-center
           `}
         >
-          &copy; 2025 BlixerHost - Todos los derechos reservados
-          <br 
-            className={`
-              hidden md:block
-            `}
-          />
-          <Link 
-            href="https://linktr.ee/daridev"
-            target="_blank"
-            className={`
-              duration-200
-              hover:opacity-75
-            `}
-          >
-            Powered by DariDev Team
-          </Link>
-        </p>
+          {
+            links.map((category, index) => (
+              <div 
+                key={index}
+                className={`
+                  category
+                  w-full
+                  max-w-xs
+                  text-center lg:text-left
+                `}
+              >
+                <h3
+                  className={`
+                    category-title
+                    text-lg
+                    my-2
+                  `}
+                >
+                  {category.category}
+                </h3>
+                <ul className="category-links">
+                  {category.links.map((link, linkIndex) => (
+                    <li key={linkIndex} className="category-link">
+                      <Link 
+                        href={link.href}
+                        className={`
+                          font-normal
+                          my-1
+                          inline-block
+                          duration-200
+                          hover:text-blue-medium
+                        `}
+                      >
+                        {link.text}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+
+        </div>
+
       </div>
     </footer>
   )

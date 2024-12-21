@@ -34,7 +34,7 @@ export default function ButtonLink({
         ${active ? "bg-transparent" : "bg-green-dark hover:bg-transparent"}
         ${active ? "text-green-dark" : "text-blue-dark hover:text-green-dark"}
         font-weight-bold
-        text-2xl
+        text-xl
         font-bold
         rounded-md
         px-8

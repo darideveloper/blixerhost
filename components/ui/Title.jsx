@@ -13,7 +13,8 @@ export default function Title({ children, isH1 = false, className }) {
   
   const classes = `
     title
-    text-4xl sm:text-6xl
+    text-3xl sm:text-5xl
+    font-bold
     ${fontTitle.className}
     ${className}
   `
