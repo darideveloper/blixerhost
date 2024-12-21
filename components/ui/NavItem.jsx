@@ -25,14 +25,13 @@ const NavItem = ({ item, isMobile = false, className = "" }) => {
           className={`
             text-white
             font-bold
-            hover:bg-blue-dark
-            hover:text-white
+            hover:text-blue-medium
             transition
             duration-300
             ease-in-out
             rounded-md
             px-2 py-2
-            ${isMobile && "block w-full text-center"}
+            ${isMobile && "block w-full"}
             ${className}`}
         >
           {item.label}
@@ -66,8 +65,9 @@ const NavItem = ({ item, isMobile = false, className = "" }) => {
         <ButtonLink
           href={item.href}
           active={false}
+          icon={item.icon}
           className={`
-            hover:bg-blue-dark
+            hover:border-white
             hover:text-white
             ${isMobile && "w-full"}
             ${className}`}

@@ -1,19 +1,20 @@
 "use client"
 
 // Icons
-import { FaDiscord } from "react-icons/fa"
-import { FaXTwitter } from "react-icons/fa6"
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri"
 
 // Libs
-import { useState } from "react"
-import Image from "next/image"
+import { useState, useEffect } from "react"
 
 // Components
 import NavItem from "@/components/ui/NavItem"
+import Logo from "@/components/ui/Logo"
+import Socials from "@/components/ui/Socials"
+import ButtonLink from "@/components/ui/ButtonLink"
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const navigationItems = [
     {
@@ -26,77 +27,63 @@ export default function Header() {
       href: "/bots",
       label: "Bots de Discord",
     },
-    {
-      type: "icon",
-      href: "https://discord.gg/kFZ5DaD",
-      icon: FaDiscord,
-      label: "Discord",
-    },
-    {
-      type: "icon",
-      href: "",
-      icon: FaXTwitter,
-      label: "Twitter",
-    },
-    {
-      type: "button",
-      href: "#minecraft-scale",
-      label: "Comenzar",
-    },
   ]
 
-  // for mobile
-  const renderMobileIcons = (iconItems) => (
-    /* this style will be specific for mobile icons. i will try to refactor it later */
-    <div
-      className={`
-            flex
-            justify-center
-            space-x-4`}
-    >
-      {iconItems.map((item, index) => (
-        <div key={index}>
-          <NavItem className="" item={item} isMobile={true} />
-        </div>
-      ))}
-    </div>
-  )
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth >= 1024) {
+        setIsScrolled(window.scrollY > 0)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
 
   return (
     <header
       className={`
-      header`}
+        bg-blue-alternative
+        sticky 
+        top-0
+        z-50
+        transition duration-300 ease-in-out
+        ${isScrolled ? "bg-blue-alternative shadow-xl" : "lg:bg-transparent"}
+        `}
     >
-      <nav
-        className={`
-        bg-blue-medium
-        py-4`}
-      >
+      <nav className={`py-4`}>
         <div
           className={`
-          container
-          mx-auto
-          px-4`}
+            container
+            mx-auto
+            px-4
+          `}
         >
           <div
             className={`
-            flex
-            justify-between
-            items-center`}
+              flex
+              justify-between
+              items-center
+            `}
           >
             <div
               className={`
-              flex
-              items-center
-              space-x-6`}
+                flex
+                items-center
+                space-x-6
+              `}
             >
-              <Image
-                src="/images/logo.webp"
-                alt="BlixerHost Logo"
-                width={200}
-                height={45}
+              <Logo
                 className={`
-                  w-16`}
+                   transition-all
+                    duration-500
+                    ease-in-out
+                    transform
+                    ${isScrolled ? "w-14 scale-100" : "w-20 scale-100"}
+                    
+                `}
               />
               <div
                 className={`
@@ -117,21 +104,23 @@ export default function Header() {
             <div
               className={`
               hidden
-              lg:flex
-              items-center
-              space-x-2`}
+              lg:flex 
+              items-center 
+              space-x-2
+              `}
             >
-              {navigationItems
-                .filter(
-                  (item) => item.type === "icon" || item.type === "button"
-                )
-                .map((item, index) => (
-                  <div className="" key={index}>
-                    <NavItem item={item} />
-                  </div>
-                ))}
+              <Socials />
+              <ButtonLink
+                className={`
+                    hover:text-white
+                    hover:bg-transparent
+                    hover:border-white
+                  `}
+                href="#minecraft-scale"
+              >
+                Comenzar
+              </ButtonLink>
             </div>
-
             <div
               className={`
               lg:hidden
@@ -149,12 +138,21 @@ export default function Header() {
                   rounded-md
                   w-12 h-12
                   flex items-center
-                  justify-center`}
+                  justify-center
+                `}
               >
                 {menuOpen ? (
-                  <RiCloseLine className="text-3xl" />
+                  <RiCloseLine
+                    className={`
+                      text-3xl
+                    `}
+                  />
                 ) : (
-                  <RiMenu3Line className="text-3xl" />
+                  <RiMenu3Line
+                    className={`
+                      text-3xl
+                    `}
+                  />
                 )}
               </button>
             </div>
@@ -172,43 +170,54 @@ export default function Header() {
                   : "opacity-0 max-h-0 overflow-hidden"
               }`}
           >
-            {/*Mobile Navigation -- if you change anything please be careful*/}
             <ul
               className={`
-              flex
-              flex-col
-              items-center
-              space-y-4`}
+                flex
+                flex-col
+                space-y-4
+              `}
             >
-              {/*Text Links -- this is text links only in mobile*/}
               {navigationItems
                 .filter((item) => item.type === "link")
-                .map((item, index) => (
-                  <li key={index} className="w-full">
-                    <NavItem item={item} isMobile={true} />
-                  </li>
-                ))}
-
-              {/*Icons Group -- this is group of icons only in mobile */}
-              <li className="w-full">
-                {renderMobileIcons(
-                  navigationItems.filter((item) => item.type === "icon")
-                )}
-              </li>
-
-              {/* Button -- this is button only in mobile */}
-              {navigationItems
-                .filter((item) => item.type === "button")
                 .map((item, index) => (
                   <li
                     key={index}
                     className={`
-                  w-full
-                  max-w-xs`}
+                    w-full
+                  `}
                   >
                     <NavItem item={item} isMobile={true} />
                   </li>
                 ))}
+              <li
+                className={`
+                  w-full
+                `}
+              >
+                <Socials
+                  isMobile={true}
+                  className={`
+                    flex
+                    items-start
+                  `}
+                />
+              </li>
+              <li
+                className={`
+                  w-full
+                `}
+              >
+                <ButtonLink
+                  className={`
+                    hover:text-white
+                    hover:bg-transparent
+                    hover:border-white
+                    `}
+                  href="#minecraft-scale"
+                >
+                  Comenzar
+                </ButtonLink>
+              </li>
             </ul>
           </div>
         </div>
