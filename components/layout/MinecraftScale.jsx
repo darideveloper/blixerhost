@@ -185,7 +185,7 @@ export default function MinecraftScale() {
               w-full
             `}
             data-aos="fade-down"
-            data-aos-delay="600"
+            data-aos-delay="400"
           >
             <p
               className={`
@@ -216,7 +216,7 @@ export default function MinecraftScale() {
               my-4
             `}
             data-aos="fade-down"
-            data-aos-delay="1000"
+            data-aos-delay="600"
           >
             {selectedPlan.price} €
           </p>
@@ -227,7 +227,7 @@ export default function MinecraftScale() {
               font-bold
             `}
             data-aos="fade-down"
-            data-aos-delay="1400"
+            data-aos-delay="800"
           >
             {selectedPlan.priceDetails}
           </p>
@@ -247,8 +247,6 @@ export default function MinecraftScale() {
               cta-wrapper
               w-full
             `}
-            data-aos="zoom-in"
-            data-aos-delay="2100"
           >
             <ButtonLink
               href={`/minecraft#${selectedPlan.name.toLowerCase().replaceAll(" ", "-")}`}
