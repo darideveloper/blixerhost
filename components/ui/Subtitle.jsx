@@ -15,7 +15,7 @@ export default function Subtitle({ children, className }) {
     <h3
       className={`
         subtitle
-        text-5xl
+        text-3xl
         ${fontTitle.className}
         my-4
         ${className}

@@ -45,7 +45,7 @@ export default function ButtonAction({
             : "text-blue-dark hover:text-blue-medium hover:border-blue-medium"
         }
         font-weight-bold
-        text-2xl
+        text-xl
         font-bold
         rounded-md
         px-2
