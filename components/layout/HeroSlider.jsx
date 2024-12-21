@@ -19,13 +19,13 @@ export default function HeroSlider() {
       title: "Alojamiento de Minecraft",
       text: "Ofrecemos los mejores servidores para hosting de minecraft, disponibles 24/7 a costos accesibles desde $1.00 / mes",
       ctaLink: "#minecraft-scale",
-      image: "minecraft-sword.webp",
+      image: "minecraft.webp",
     },
     {
       title: "Bots de Discord",
       text: "Potencia tu servidor de Discord con bots personalizados que automatizan, interactúan y elevan tu comunidad al siguiente nivel.",
       ctaLink: "/bots",
-      image: "discord-logo.webp",
+      image: "bots.webp",
     },
   ]
 
@@ -33,9 +33,8 @@ export default function HeroSlider() {
     <section
       className={`
         hero-slider
-        container
         mx-auto
-        !mt-20
+        !mt-0
       `}
     >
       <Swiper
@@ -54,13 +53,12 @@ export default function HeroSlider() {
             key={index}
             className={`
               hero-slide
-              relative
-              py-12
+              py-32
             `}
           >
             <div
               className={`
-                bg-image-wrapper
+                bg-image
                 absolute
                 top-1/2
                 left-1/2
@@ -74,21 +72,11 @@ export default function HeroSlider() {
                 items-center
                 justify-center
                 overflow-visible
+                bg-cover
+                bg-center
               `}
+              style={{"backgroundImage": `url(/images/hero/${heroSlide.image})`}}
             >
-
-              <Image 
-                src={`/images/${heroSlide.image}`}
-                alt={heroSlide.title}
-                width={1000}
-                height={1000}
-                className={`
-                  bg-image
-                  w-1/2 md:w-1/4
-                  h-auto
-                  animate-ping
-                `}
-              />
             </div>
             <div
               className={`
