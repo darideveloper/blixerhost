@@ -53,6 +53,8 @@ export default function Footer() {
         text-sm
         py-6
         text-center md:text-left
+        rounded-t-3xl
+        border-t-2 border-green-dark
       `}
     >
       <div
