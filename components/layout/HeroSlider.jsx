@@ -46,6 +46,7 @@ export default function HeroSlider() {
           delay: 8000,
           disableOnInteraction: false,
         }}
+        className="swipper-hero-slider"
       >
         {/* Render each slide */}
         {heroSlides.map((heroSlide, index) => (
@@ -56,6 +57,16 @@ export default function HeroSlider() {
               py-32
             `}
           >
+            <div 
+              className={`
+                bg-overlay
+                absolute
+                top-0
+                left-0
+                w-full
+                h-full
+              `}
+            />
             <div
               className={`
                 bg-image
@@ -67,7 +78,7 @@ export default function HeroSlider() {
                 -translate-y-1/2
                 w-full
                 h-full
-                -z-10
+                -z-20
                 flex
                 items-center
                 justify-center

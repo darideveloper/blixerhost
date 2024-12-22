@@ -10,7 +10,7 @@ $blue-dark: theme("colors.blue.dark")
 $green-light: theme("colors.green.light")
 $green-dark: theme("colors.green.dark")
 
-html 
+html
   scroll-behavior: smooth
 
 body
@@ -73,3 +73,7 @@ section
     transform: scale(1.75)
     opacity: 0.1
     filter: blur(0px)
+
+.bg-overlay
+  background: $blue-dark
+  background: linear-gradient(180deg, $blue-dark 10%, rgba(white, 0) 50%, $blue-dark 90%)
