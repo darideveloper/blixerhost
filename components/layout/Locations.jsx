@@ -12,14 +12,10 @@ import Image from "next/image"
 export default function Locations() {
   const locations = [
     {
-      name: "Miami",
+      name: "Miami, Florida",
       active: true,
       imageSrc: "/maps/map-miami.webp",
-    },
-    {
-      name: "Próximamente",
-      active: false,
-      imageSrc: "",
+      flag: "usa.svg",
     },
   ]
 
@@ -58,7 +54,7 @@ export default function Locations() {
             `}
           isH1={false}
         >
-          Locations
+          Nuestras ubicaciones
         </Title>
         <p
           className={`
@@ -91,6 +87,15 @@ export default function Locations() {
               active={selectedLocation.name === location.name}
               disabled={!location.active}
             >
+              <Image 
+                src={`/images/flags/${location.flag}`}
+                alt={`bandera de ${location.name}`}
+                width={30}
+                height={30}
+                className={`
+                  mr-3
+                `}
+              />
               {location.name}
             </ButtonAction>
           ))}
