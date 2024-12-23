@@ -14,15 +14,9 @@ import { MdOutlineNavigateNext } from "react-icons/md"
  * @param {string} props.className - Additional CSS classes
  * @returns {JSX.Element} - Details card component
  */
-const DetailsCard = ({ title, children, icon, className }) => {
-
-  // Component state
-  const [isOpen, setIsOpen] = useState(false)
+const DetailsCard = ({ title, children, icon, className, isOpen, onToggle }) => {
 
   // Toggle accordion / handle click event
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen)
-  }
 
   return (
     <div
@@ -46,7 +40,7 @@ const DetailsCard = ({ title, children, icon, className }) => {
           text-left
           focus:outline-none
           transition duration-300 ease-in-out`}
-        onClick={toggleAccordion}
+        onClick={onToggle}
       >
         <h3
           className={`

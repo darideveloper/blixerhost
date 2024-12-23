@@ -119,15 +119,21 @@ export default function Faqs() {
     Object.keys(faqsData)[0]
   )
   const [animating, setAnimating] = useState(false)
+  const [indexOpened, setIndexOpened] = useState(0)
 
   const handleCategoryChange = (category) => {
     if (!animating) {
       setAnimating(true)
       setTimeout(() => {
         setCurrentCategory(category)
+        setIndexOpened(0)
         setAnimating(false)
       }, 500)
     }
+  }
+
+  const handleOnToggleIndex = (index) => {
+    setIndexOpened(index)
   }
 
   return (
@@ -152,9 +158,7 @@ export default function Faqs() {
           items-center
           justify-between
         `}
-        data-aos="fade-up"
       >
-
         <div
           className={`
           left
@@ -188,8 +192,6 @@ export default function Faqs() {
               <div
                 className="p-2"
                 key={index}
-                data-aos="zoom-in"
-                data-aos-delay={500 + index * 100}
               >
                 <ButtonAction
                   onClick={() => handleCategoryChange(category)}
@@ -267,7 +269,7 @@ export default function Faqs() {
           </div>
         </div>
 
-        <div 
+        <div
           className={`
             right
             faqs-wrapper
@@ -275,17 +277,16 @@ export default function Faqs() {
             p-2
             md:w-1/2
           `}
-          data-aos="fade-down"
-          data-aos-delay="400"
         >
           <div
             className={`
             faqs
             w-full
-            ${animating
+            ${
+              animating
                 ? "opacity-0 transition-opacity duration-500"
                 : "opacity-100 transition-opacity duration-500"
-              }
+            }
             `}
           >
             {faqsData[currentCategory].questions.map((faq, index) => (
@@ -293,11 +294,15 @@ export default function Faqs() {
                 className={`
                   details-wrapper
                 `}
-                data-aos="zoom-out"
-                data-aos-delay={Object.keys(faqsData).length * 350 + index * 150}
                 key={index}
               >
-                <DetailsCard icon={faq.icon} title={faq.title} index={index}>
+                <DetailsCard
+                  onToggle={() => handleOnToggleIndex(index)}
+                  isOpen={index === indexOpened}
+                  icon={faq.icon}
+                  title={faq.title}
+                  index={index}
+                >
                   <article>{faq.answer}</article>
                 </DetailsCard>
               </div>

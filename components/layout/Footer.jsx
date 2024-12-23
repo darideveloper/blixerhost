@@ -99,7 +99,7 @@ export default function Footer() {
                 text-md
               `}
             >
-                Llevamos tus ideas
+                Llevamos tus ideas {" "}
                 <br 
                   className={`
                     hidden md:block
