@@ -105,8 +105,7 @@ export default function Locations() {
         className={`
           location-left
           w-full lg:w-2/3
-          transition duration-500 ease-in-out transform ${
-            selectedLocation.embededLink ? "opacity-100" : "opacity-0"
+          transition duration-500 ease-in-out transform
           }
         `}
         data-aos="fade-down"
