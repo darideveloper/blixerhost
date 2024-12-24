@@ -8,7 +8,6 @@ import AOSInit from '@/components/utils/AOSInit'
 
 // css
 import "@/css/globals.sass"
-import "aos/dist/aos.css"
 
 // Metadata
 export const metadata = {
