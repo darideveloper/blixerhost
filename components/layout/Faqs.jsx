@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa"
 import { BiSolidConversation } from "react-icons/bi"
 import { GoDotFill } from "react-icons/go"
-
+import { BsFillQuestionSquareFill } from "react-icons/bs"
 // Libs
 import { useState } from "react"
 
@@ -18,7 +18,6 @@ import ButtonAction from "@/components/ui/ButtonAction"
 import ButtonLink from "@/components/ui/ButtonLink"
 import Title from "@/components/ui/Title"
 import DetailsCard from "@/components/ui/DetailsCard"
-
 export default function Faqs() {
   const faqsData = {
     "General Information": {
@@ -28,19 +27,16 @@ export default function Faqs() {
           title: "What is EasyMinecraftHosting?",
           answer:
             "EasyMinecraftHosting is a Minecraft server hosting platform that provides reliable, high-performance servers for all your Minecraft gaming needs.",
-          icon: <FaQuestionCircle />,
         },
         {
           title: "How do I create a new Minecraft server?",
           answer:
             "To create a new Minecraft server, simply sign up for an EasyMinecraftHosting account, select a plan that fits your needs, and follow the step-by-step instructions to set up your server.",
-          icon: <FaQuestionCircle />,
         },
         {
           title: "Can I host multiple Minecraft servers with one account?",
           answer:
             "Yes, you can host multiple Minecraft servers with a single EasyMinecraftHosting account. Our platform allows you to easily manage all your servers from a centralized dashboard.",
-          icon: <FaQuestionCircle />,
         },
       ],
     },
@@ -51,19 +47,16 @@ export default function Faqs() {
           title: "What payment methods do you accept?",
           answer:
             "EasyMinecraftHosting accepts a variety of payment methods, including credit/debit cards, PayPal, and cryptocurrency. We strive to offer flexible payment options for our customers.",
-          icon: <FaQuestionCircle />,
         },
         {
           title: "Do you offer any discounts or promotions?",
           answer:
             "Yes, we frequently offer discounts and promotions, such as first-month discounts, annual billing discounts, and special offers for new customers. Be sure to check our website or contact our sales team for the latest deals.",
-          icon: <FaQuestionCircle />,
         },
         {
           title: "Can I cancel my subscription at any time?",
           answer:
             "Absolutely. Our Minecraft server hosting plans are month-to-month, and you can cancel your subscription at any time without any penalties or fees.",
-          icon: <FaQuestionCircle />,
         },
       ],
     },
@@ -74,19 +67,16 @@ export default function Faqs() {
           title: "Do you offer custom server configurations?",
           answer:
             "Yes, we provide a wide range of server configurations and options to ensure your Minecraft server meets your specific needs. Our team can assist you in selecting the right hardware and software setup for your requirements.",
-          icon: <FaQuestionCircle />,
         },
         {
           title: "Can I install my own plugins and mods?",
           answer:
             "Yes, you can install your own plugins and mods on your EasyMinecraftHosting server. Our platform supports a wide range of Minecraft modifications to enhance your gaming experience.",
-          icon: <FaQuestionCircle />,
         },
         {
           title: "Do you provide automatic server backups?",
           answer:
             "Absolutely. We offer automatic daily backups of your Minecraft server data, allowing you to quickly restore your server in the event of an issue or data loss.",
-          icon: <FaQuestionCircle />,
         },
       ],
     },
@@ -97,19 +87,16 @@ export default function Faqs() {
           title: "What is your average support response time?",
           answer:
             "At EasyMinecraftHosting, we pride ourselves on our exceptional customer support. Our average support response time is within 30 minutes, ensuring that any issues or questions you have are addressed promptly.",
-          icon: <FaQuestionCircle />,
         },
         {
           title: "Do you offer 24/7 technical support?",
           answer:
             "Yes, our Minecraft server hosting platform is supported by a team of knowledgeable technicians who are available 24 hours a day, 7 days a week to assist you with any technical issues or questions you may have.",
-          icon: <FaQuestionCircle />,
         },
         {
           title: "How can I contact your support team?",
           answer:
             "You can reach our support team through various channels, including our live chat, email, and a dedicated support ticket system. We strive to provide you with multiple options to get the assistance you need.",
-          icon: <FaQuestionCircle />,
         },
       ],
     },
@@ -144,7 +131,7 @@ export default function Faqs() {
         mx-auto
         flex
         items-center
-        md:gap-8
+        md:gap-4
         flex-col
         w-full
     `}
@@ -155,7 +142,6 @@ export default function Faqs() {
           w-full
           flex
           flex-col md:flex-row
-          items-center
           justify-between
         `}
       >
@@ -189,10 +175,7 @@ export default function Faqs() {
           >
             {/* Render ButtonAction */}
             {Object.keys(faqsData).map((category, index) => (
-              <div
-                className="p-2"
-                key={index}
-              >
+              <div className="p-2" key={index}>
                 <ButtonAction
                   onClick={() => handleCategoryChange(category)}
                   href="#"
@@ -293,13 +276,13 @@ export default function Faqs() {
               <div
                 className={`
                   details-wrapper
+                  opacity-90
                 `}
                 key={index}
               >
                 <DetailsCard
                   onToggle={() => handleOnToggleIndex(index)}
                   isOpen={index === indexOpened}
-                  icon={faq.icon}
                   title={faq.title}
                   index={index}
                 >
